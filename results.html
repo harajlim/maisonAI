@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Perfect Matches - MaisonAI</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/results.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fas fa-couch"></i>
+            Maison<span class="ai">AI</span>
+        </div>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="quiz.html">Retake Quiz</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <main class="results-container">
+        <div class="results-header">
+            <div class="confetti-animation">🎉</div>
+            <h1>We Found Your Perfect Matches!</h1>
+            <p class="subtitle">Based on your style preferences and requirements, our AI has selected these amazing pieces for you.</p>
+        </div>
+
+        <div class="match-summary">
+            <div class="preference-tags">
+                <span class="tag style-tag">Mid-Century Modern</span>
+                <span class="tag size-tag">3-Seater</span>
+                <span class="tag budget-tag">Under $2,000</span>
+            </div>
+        </div>
+
+        <div class="results-grid">
+            <!-- Top Match -->
+            <div class="result-card top-match">
+                <div class="match-badge">
+                    <i class="fas fa-crown"></i>
+                    Best Match
+                </div>
+                <div class="result-image">
+                    <img src="https://brooklynspace.co/cdn/shop/products/stately_green_brooklyn_space_modern_sofa32_3.jpg?v=1701360511" alt="Top Match Couch">
+                </div>
+                <div class="result-details">
+                    <h2>The Perfect Match</h2>
+                    <div class="match-score">
+                        <div class="score-bar">
+                            <div class="score-fill" style="width: 95%"></div>
+                        </div>
+                        <span>95% Match</span>
+                    </div>
+                    <div class="features">
+                        <span><i class="fas fa-ruler"></i> 84" × 38" × 34"</span>
+                        <span><i class="fas fa-palette"></i> Multiple Colors</span>
+                        <span><i class="fas fa-tag"></i> $1,899</span>
+                    </div>
+                    <div class="match-reasons">
+                        <h3>Why This Matches</h3>
+                        <ul>
+                            <li>Perfect size for your space</li>
+                            <li>Matches your style preference</li>
+                            <li>Within your budget range</li>
+                            <li>Ideal for your usage needs</li>
+                        </ul>
+                    </div>
+                    <div class="action-buttons">
+                        <a href="#" class="primary-btn">View Details</a>
+                        <a href="#" class="secondary-btn">Save for Later</a>
+                        <button class="visualize-btn" data-model="models/sofa.usdz">
+                            <i class="fas fa-camera"></i>
+                            View in Your Room
+                        </button>
+                        <a rel="ar" href="models/sofa.usdz" class="ar-button" style="display: none;">
+                            <img src="https://developer.apple.com/assets/elements/icons/ar/ar-badge.svg" alt="AR Quick Look">
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Other Matches -->
+            <div class="result-card">
+                <div class="result-image">
+                    <img src="https://assets.pbimgs.com/pbimgs/rk/images/dp/wcm/202350/0304/burton-upholstered-sofa-c.jpg" alt="Match 2">
+                </div>
+                <div class="result-details">
+                    <h3>Modern Comfort Sofa</h3>
+                    <div class="match-score">
+                        <div class="score-bar">
+                            <div class="score-fill" style="width: 88%"></div>
+                        </div>
+                        <span>88% Match</span>
+                    </div>
+                    <div class="features">
+                        <span><i class="fas fa-ruler"></i> 82" × 36" × 33"</span>
+                        <span><i class="fas fa-tag"></i> $1,599</span>
+                    </div>
+                    <div class="action-buttons">
+                        <a href="#" class="view-details-btn">View Details</a>
+                        <button class="visualize-btn" data-model="models/sofa.usdz">
+                            <i class="fas fa-camera"></i>
+                            View in Your Room
+                        </button>
+                        <a rel="ar" href="models/sofa.usdz" class="ar-button" style="display: none;">
+                            <img src="https://developer.apple.com/assets/elements/icons/ar/ar-badge.svg" alt="AR Quick Look">
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Third Match -->
+            <div class="result-card">
+                <div class="result-image">
+                    <img src="https://www.article.com/media/W1siZiIsIjIwMjEvMDgvMzEvMTUvMjEvNTAvOGE4NzA5ODAtZWNlYy00NmRmLWJkOWUtOTI0ZmQ5NmM5ZmE4L1NvZmEtU2VhdGluZy1TZWNhLVNvZmEtQ2FzY2FkZS1CbHVzaC1GUi0wMS5qcGciXV0/Sofa-Seating-Seca-Sofa-Cascade-Blush-FR-01.jpg" alt="Match 3">
+                </div>
+                <div class="result-details">
+                    <h3>Classic Elegance Sofa</h3>
+                    <div class="match-score">
+                        <div class="score-bar">
+                            <div class="score-fill" style="width: 85%"></div>
+                        </div>
+                        <span>85% Match</span>
+                    </div>
+                    <div class="features">
+                        <span><i class="fas fa-ruler"></i> 86" × 38" × 35"</span>
+                        <span><i class="fas fa-tag"></i> $2,199</span>
+                    </div>
+                    <div class="action-buttons">
+                        <a href="#" class="view-details-btn">View Details</a>
+                        <button class="visualize-btn" data-model="models/sofa.usdz">
+                            <i class="fas fa-camera"></i>
+                            View in Your Room
+                        </button>
+                        <a rel="ar" href="models/sofa.usdz" class="ar-button" style="display: none;">
+                            <img src="https://developer.apple.com/assets/elements/icons/ar/ar-badge.svg" alt="AR Quick Look">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="results-footer">
+            <div class="help-section">
+                <h3>Need Help Deciding?</h3>
+                <p>Our design experts are here to help you make the perfect choice.</p>
+                <button class="contact-btn">
+                    <i class="fas fa-comments"></i>
+                    Chat with an Expert
+                </button>
+            </div>
+            <div class="save-results">
+                <button class="save-btn">
+                    <i class="fas fa-envelope"></i>
+                    Email My Matches
+                </button>
+                <button class="print-btn">
+                    <i class="fas fa-print"></i>
+                    Print Results
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Visualization Modal -->
+    <div class="visualization-modal">
+        <div class="modal-content">
+            <button class="modal-close">
+                <i class="fas fa-times"></i>
+            </button>
+            <h2>Visualize in Your Room</h2>
+            <button class="upload-room-btn">
+                <i class="fas fa-camera"></i>
+                Upload Room Photo
+            </button>
+            <input type="file" id="room-upload" accept="image/*" style="display: none;">
+            <div class="visualization-container">
+                <img class="room-image" src="" alt="Your room">
+                <img class="furniture-image" src="" alt="Selected furniture">
+            </div>
+            <div class="visualization-controls">
+                <div class="control-group">
+                    <label>Size</label>
+                    <input type="range" id="size-control" min="10" max="200" value="100">
+                </div>
+                <div class="control-group">
+                    <label>Rotation</label>
+                    <input type="range" id="rotation-control" min="0" max="360" value="0">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/results.js"></script>
+</body>
+</html> 

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MaisonAI Quiz - Find Your Perfect Match</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/quiz.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fas fa-couch"></i>
+            Maison<span class="ai">AI</span>
+        </div>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="index.html#how-it-works">How It Works</a>
+            <a href="index.html#features">Features</a>
+        </div>
+    </nav>
+
+    <main class="quiz-container">
+        <div class="progress-bar">
+            <div class="progress" id="quiz-progress"></div>
+            <div class="progress-steps">
+                <div class="step active">Style</div>
+                <div class="step">Space</div>
+                <div class="step">Usage</div>
+                <div class="step">Budget</div>
+            </div>
+        </div>
+
+        <form id="quiz-form" class="quiz-form">
+            <!-- Step 1: Style Preferences -->
+            <div class="quiz-step active" data-step="1">
+                <h2>What's your preferred style?</h2>
+                <div class="style-options">
+                    <div class="style-option">
+                        <input type="radio" name="style" id="modern" value="modern">
+                        <label for="modern">
+                            <img src="https://i.ebayimg.com/images/g/nVMAAOSwiXdld4kj/s-l1200.jpg" alt="Modern style">
+                            <span>Modern</span>
+                        </label>
+                    </div>
+                    <div class="style-option">
+                        <input type="radio" name="style" id="bohemian" value="bohemian">
+                        <label for="bohemian">
+                            <img src="https://media1.popsugar-assets.com/files/thumbor/IuLIipmK8a9boThfVG87TrozkB0=/fit-in/792x792/filters:format_auto():upscale()/2022/03/24/755/n/1922794/d0c7be82a0313310_netimgwzFZPI.webp" alt="Bohemian style">
+                            <span>Bohemian (Boho)</span>
+                        </label>
+                    </div>
+                    <div class="style-option">
+                        <input type="radio" name="style" id="midcentury" value="midcentury">
+                        <label for="midcentury">
+                            <img src="https://brooklynspace.co/cdn/shop/products/stately_green_brooklyn_space_modern_sofa32_3.jpg?v=1701360511&width=1445" alt="Mid-Century Modern style">
+                            <span>Mid-Century Modern</span>
+                        </label>
+                    </div>
+                    <div class="style-option">
+                        <input type="radio" name="style" id="industrial" value="industrial">
+                        <label for="industrial">
+                            <img src="https://foter.com/photos/425/ainsley-73-6-vegan-leather-sofa-1.jpg?s=lbx" alt="Industrial style">
+                            <span>Industrial</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2: Space Information -->
+            <div class="quiz-step" data-step="2">
+                <h2>Tell us about your space</h2>
+                <div class="form-group">
+                    <label for="room-size">Room Size</label>
+                    <div class="input-with-unit">
+                        <input type="number" id="room-size" name="room-size" min="5" max="1000" placeholder="400" required>
+                        <button type="button" class="unit-toggle" id="room-unit-toggle" data-unit="sqft">
+                            sq ft
+                        </button>
+                    </div>
+                    <small class="input-help">Typical living room: 300-400 sq ft (28-37 m²)</small>
+                </div>
+                <div class="form-group">
+                    <label>Where will the couch be placed?</label>
+                    <select name="placement" required>
+                        <option value="">Select placement</option>
+                        <option value="living-room">Living Room</option>
+                        <option value="family-room">Family Room</option>
+                        <option value="den">Den/Study</option>
+                        <option value="basement">Basement</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Maximum couch dimensions:</label>
+                    <div class="dimensions-input">
+                        <input type="number" name="width" placeholder="84" required>
+                        <input type="number" name="depth" placeholder="38" required>
+                        <input type="number" name="height" placeholder="34" required>
+                    </div>
+                    <small class="input-help">Width × Depth × Height (inches) - Typical 3-seater: 84" × 38" × 34"</small>
+                </div>
+                <div class="form-group">
+                    <label>Upload a photo of your space (optional):</label>
+                    <div class="image-upload-container">
+                        <input type="file" id="space-image" name="space-image" accept="image/*" class="file-input">
+                        <label for="space-image" class="upload-button">
+                            <i class="fas fa-camera"></i>
+                            Upload Photo
+                        </label>
+                        <div id="image-preview" class="image-preview">
+                            <img src="" alt="Preview" style="display: none;">
+                            <span class="preview-text">No image selected</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3: Usage -->
+            <div class="quiz-step" data-step="3">
+                <h2>How will you use your couch?</h2>
+                <div class="usage-options">
+                    <div class="form-group">
+                        <label>Primary use:</label>
+                        <div class="checkbox-group">
+                            <label>
+                                <input type="checkbox" name="usage" value="daily-lounging">
+                                Daily lounging
+                            </label>
+                            <label>
+                                <input type="checkbox" name="usage" value="entertaining">
+                                Entertaining guests
+                            </label>
+                            <label>
+                                <input type="checkbox" name="usage" value="napping">
+                                Napping
+                            </label>
+                            <label>
+                                <input type="checkbox" name="usage" value="tv-watching">
+                                TV watching
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>How many people should it seat?</label>
+                        <select name="seating" required>
+                            <option value="">Select seating capacity</option>
+                            <option value="2">2 people</option>
+                            <option value="3">3 people</option>
+                            <option value="4">4 people</option>
+                            <option value="5+">5+ people</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Do you have pets?</label>
+                        <div class="radio-group">
+                            <label>
+                                <input type="radio" name="pets" value="yes">
+                                Yes
+                            </label>
+                            <label>
+                                <input type="radio" name="pets" value="no">
+                                No
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 4: Budget -->
+            <div class="quiz-step" data-step="4">
+                <h2>What's your budget?</h2>
+                <div class="budget-options">
+                    <div class="form-group">
+                        <label for="budget-range">Select your budget range:</label>
+                        <input type="range" id="budget-range" name="budget" min="500" max="5000" step="100">
+                        <div class="budget-display">
+                            <span id="budget-value">$2,750</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Preferred payment method:</label>
+                        <select name="payment" required>
+                            <option value="">Select payment method</option>
+                            <option value="full">Full payment</option>
+                            <option value="financing">Financing</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quiz-navigation">
+                <button type="button" class="prev-btn" disabled>Previous</button>
+                <button type="button" class="next-btn">Next</button>
+                <button type="submit" class="submit-btn" style="display: none;">See My Matches</button>
+            </div>
+        </form>
+    </main>
+
+    <script src="js/main.js"></script>
+    <script src="js/quiz.js"></script>
+</body>
+</html> 
