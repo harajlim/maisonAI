@@ -179,11 +179,8 @@ document.addEventListener('DOMContentLoaded', () => {
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Finding Your Matches...';
             submitBtn.disabled = true;
             
-            // Simulate processing time (remove this in production)
-            setTimeout(() => {
-                // Redirect to results page
-                window.location.href = 'results.html';
-            }, 1500);
+            // Redirect to results page
+            window.location.href = './results.html';
         }
     });
 
