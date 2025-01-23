@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Designer Dashboard - MaisonAI</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/designer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fas fa-couch"></i>
+            Maison<span class="ai">AI</span>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="#" class="active">Designer Dashboard</a>
+        </div>
+    </nav>
+
+    <main class="designer-container">
+        <div class="dashboard-header">
+            <h1>Client Profiles</h1>
+            <div class="filter-controls">
+                <select id="status-filter">
+                    <option value="all">All Profiles</option>
+                    <option value="pending">Pending Review</option>
+                    <option value="reviewed">Reviewed</option>
+                </select>
+                <input type="text" id="search-input" placeholder="Search clients...">
+            </div>
+        </div>
+
+        <div class="client-profiles">
+            <!-- Client profiles will be populated here -->
+        </div>
+    </main>
+
+    <!-- Client Profile Modal -->
+    <div class="profile-modal">
+        <div class="modal-content">
+            <button class="modal-close">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="profile-details">
+                <h2>Client Profile</h2>
+                <div class="profile-info">
+                    <div class="info-section">
+                        <h3>Style Preferences</h3>
+                        <div id="style-details"></div>
+                    </div>
+                    <div class="info-section">
+                        <h3>Space Information</h3>
+                        <div id="space-details"></div>
+                    </div>
+                    <div class="info-section">
+                        <h3>Usage Requirements</h3>
+                        <div id="usage-details"></div>
+                    </div>
+                    <div class="info-section">
+                        <h3>Budget</h3>
+                        <div id="budget-details"></div>
+                    </div>
+                </div>
+                <div class="feedback-section">
+                    <h3>Designer Feedback</h3>
+                    <textarea id="feedback-input" placeholder="Enter your professional feedback and recommendations..."></textarea>
+                    <button class="submit-feedback">Submit Feedback</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/designer.js"></script>
+</body>
+</html> 

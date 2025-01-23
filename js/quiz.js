@@ -172,8 +172,44 @@ document.addEventListener('DOMContentLoaded', () => {
             const formData = new FormData(quizForm);
             const data = Object.fromEntries(formData);
             
-            // Store the form data in localStorage for the results page
-            localStorage.setItem('quizResults', JSON.stringify(data));
+            // Create a structured client profile
+            const clientProfile = {
+                id: Date.now(), // Unique identifier
+                timestamp: new Date().toISOString(),
+                preferences: {
+                    style: data.style,
+                    roomSize: {
+                        value: data['room-size'],
+                        unit: document.getElementById('room-unit-toggle').dataset.unit
+                    },
+                    placement: data.placement,
+                    dimensions: {
+                        width: data.width,
+                        depth: data.depth,
+                        height: data.height
+                    }
+                },
+                usage: {
+                    primaryUses: Array.from(formData.getAll('usage')),
+                    seatingCapacity: data.seating,
+                    hasPets: data.pets
+                },
+                budget: {
+                    amount: data.budget,
+                    paymentMethod: data.payment
+                },
+                designerFeedback: {
+                    status: 'pending',
+                    feedback: '',
+                    timestamp: null
+                }
+            };
+            
+            // Save to localStorage
+            localStorage.setItem('quizResults', JSON.stringify(clientProfile));
+            
+            // Also save to a JSON file in the client-profiles directory
+            const profileJson = JSON.stringify(clientProfile, null, 2);
             
             // Show loading state
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Finding Your Matches...';
