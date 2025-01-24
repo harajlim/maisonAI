@@ -41,27 +41,59 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Image upload handling
-    const spaceImageInput = document.getElementById('space-image');
-    const imagePreview = document.querySelector('.image-preview img');
-    const previewText = document.querySelector('.preview-text');
+    const spaceImage = document.getElementById('space-image');
+    const imagePreview = document.getElementById('image-preview').querySelector('img');
+    const previewText = document.getElementById('image-preview').querySelector('.preview-text');
+    const dimensionsResult = document.querySelector('.dimensions-result');
+    const maxLengthInput = document.getElementById('max-length');
+    const maxDepthInput = document.getElementById('max-depth');
+    const sofaOutline = document.getElementById('sofa-outline');
 
-    if (spaceImageInput) {
-        spaceImageInput.addEventListener('change', (e) => {
-            const file = e.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = (e) => {
-                    imagePreview.style.display = 'block';
-                    imagePreview.src = e.target.result;
-                    previewText.style.display = 'none';
-                };
-                reader.readAsDataURL(file);
-            } else {
-                imagePreview.style.display = 'none';
-                imagePreview.src = '';
-                previewText.style.display = 'block';
+    // Initialize sofa visualization with default values
+    updateSofaVisualization(50, 30);
+
+    spaceImage.addEventListener('change', async function(e) {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        // Show image preview
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            imagePreview.src = e.target.result;
+            imagePreview.style.display = 'block';
+            previewText.style.display = 'none';
+
+            // Update to larger mock dimensions
+            maxLengthInput.value = 90;  // Mock length
+            maxDepthInput.value = 30;   // Mock depth
+
+            // Set mock room size to medium
+            const mediumSizeRadio = document.querySelector('input[name="room-size"][value="medium"]');
+            if (mediumSizeRadio) {
+                mediumSizeRadio.checked = true;
             }
+
+            // Update visualization
+            updateSofaVisualization(90, 30);
+        };
+        reader.readAsDataURL(file);
+    });
+
+    // Update visualization when inputs change
+    [maxLengthInput, maxDepthInput].forEach(input => {
+        input.addEventListener('input', () => {
+            updateSofaVisualization(maxLengthInput.value, maxDepthInput.value);
         });
+    });
+
+    function updateSofaVisualization(length, depth) {
+        // Scale dimensions for visualization (1 inch = 2 pixels)
+        const scale = 2;
+        const scaledLength = length * scale;
+        const scaledDepth = depth * scale;
+
+        sofaOutline.style.width = `${scaledLength}px`;
+        sofaOutline.style.height = `${scaledDepth}px`;
     }
 
     let currentStep = 1;
@@ -82,7 +114,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    // Show current step
+    // Add this after the other const declarations at the top
+    const progressStepButtons = document.querySelectorAll('.progress-steps .step');
+
+    // Add click handlers for progress steps
+    progressStepButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const stepNumber = parseInt(button.dataset.step);
+            // Only allow clicking on steps that are accessible (have active class)
+            if (button.classList.contains('active')) {
+                currentStep = stepNumber;
+                showStep(currentStep);
+                window.scrollTo(0, 0);
+            }
+        });
+    });
+
+    // Update the CSS classes in showStep function
     const showStep = (stepNumber) => {
         steps.forEach(step => {
             step.classList.remove('active');
@@ -96,7 +144,16 @@ document.addEventListener('DOMContentLoaded', () => {
         nextBtn.style.display = stepNumber === totalSteps ? 'none' : 'block';
         submitBtn.style.display = stepNumber === totalSteps ? 'block' : 'none';
 
-        // Update progress
+        // Update progress steps to show all accessible steps
+        progressStepButtons.forEach((step, index) => {
+            if (index + 1 <= Math.max(currentStep, stepNumber)) {
+                step.classList.add('active');
+            } else {
+                step.classList.remove('active');
+            }
+        });
+
+        // Update progress bar
         updateProgress();
     };
 
@@ -144,21 +201,21 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Style preference validation
-        if (step === 1) {
-            const styleSelected = document.querySelector('input[name="style"]:checked');
-            if (!styleSelected) {
+        // Style preference validation (now in step 2)
+        if (step === 2) {
+            const styleChart = document.querySelector('.style-chart');
+            const styleBars = styleChart.querySelectorAll('.chart-bar .bar-fill');
+            let hasSelectedStyle = false;
+            
+            styleBars.forEach(bar => {
+                if (parseFloat(bar.style.width) > 0) {
+                    hasSelectedStyle = true;
+                }
+            });
+            
+            if (!hasSelectedStyle) {
                 isValid = false;
-                alert('Please select a style preference');
-            }
-        }
-
-        // Usage validation
-        if (step === 3) {
-            const usageChecked = document.querySelectorAll('input[name="usage"]:checked');
-            if (usageChecked.length === 0) {
-                isValid = false;
-                alert('Please select at least one primary use');
+                alert('Please select at least one style preference');
             }
         }
 
@@ -189,11 +246,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         height: data.height
                     }
                 },
-                usage: {
-                    primaryUses: Array.from(formData.getAll('usage')),
-                    seatingCapacity: data.seating,
-                    hasPets: data.pets
-                },
                 budget: {
                     amount: data.budget,
                     paymentMethod: data.payment
@@ -222,4 +274,76 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize first step
     showStep(currentStep);
+
+    // Add this after your other initialization code
+    const styleGrid = document.querySelector('.style-grid');
+    const styleImages = {
+        'Bohemian': ['boho1', 'boho2', 'boho3'],
+        'Modern': ['modern1', 'modern2', 'modern3'],
+        'Midcentury': ['midcen1', 'midcen2', 'midcen3'],
+        'Scandinavian': ['scandi1', 'scandi2', 'scandi3'],
+        'Traditional': ['trad1', 'trad2', 'trad3']
+    };
+
+    // Update the populate style grid function to use S3 bucket URL
+    Object.entries(styleImages).forEach(([style, images]) => {
+        images.forEach(img => {
+            const div = document.createElement('div');
+            div.className = 'style-image';
+            div.dataset.style = style;
+            
+            const image = document.createElement('img');
+            image.src = `https://maisonai.s3-us-west-2.amazonaws.com/images/${img}.jpg`;
+            image.alt = `${style} style furniture`;
+            
+            div.appendChild(image);
+            styleGrid.appendChild(div);
+        });
+    });
+
+    // Handle style selection and chart updates
+    const styleSelections = new Set();
+    const chartBars = document.querySelectorAll('.chart-bar');
+
+    document.querySelectorAll('.style-image').forEach(image => {
+        image.addEventListener('click', () => {
+            image.classList.toggle('selected');
+            const style = image.dataset.style;
+            
+            if (image.classList.contains('selected')) {
+                styleSelections.add(style);
+            } else {
+                styleSelections.delete(style);
+            }
+            
+            updateStyleChart();
+        });
+    });
+
+    function updateStyleChart() {
+        const totalSelected = document.querySelectorAll('.style-image.selected').length;
+        const styleCounts = {};
+        
+        // Initialize counts
+        chartBars.forEach(bar => {
+            const style = bar.dataset.style;
+            styleCounts[style] = 0;
+        });
+        
+        // Count selections per style
+        document.querySelectorAll('.style-image.selected').forEach(selected => {
+            const style = selected.dataset.style;
+            styleCounts[style]++;
+        });
+        
+        // Update chart
+        chartBars.forEach(bar => {
+            const style = bar.dataset.style;
+            const count = styleCounts[style];
+            const percentage = totalSelected ? (count / totalSelected) * 100 : 0;
+            
+            const fill = bar.querySelector('.bar-fill');
+            fill.style.width = `${percentage}%`;
+        });
+    }
 }); 

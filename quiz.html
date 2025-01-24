@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/quiz.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/quiz-budget.css">
 </head>
 <body>
     <nav class="navbar">
@@ -31,166 +32,320 @@
         <div class="progress-bar">
             <div class="progress" id="quiz-progress"></div>
             <div class="progress-steps">
-                <div class="step active">Style</div>
-                <div class="step">Space</div>
-                <div class="step">Usage</div>
-                <div class="step">Budget</div>
+                <button class="step active" data-step="1">Space</button>
+                <button class="step" data-step="2">Style</button>
+                <button class="step" data-step="3">Colors</button>
+                <button class="step" data-step="4">Comfort</button>
+                <button class="step" data-step="5">Features</button>
+                <button class="step" data-step="6">Budget</button>
             </div>
         </div>
 
         <form id="quiz-form" class="quiz-form">
-            <!-- Step 1: Style Preferences -->
+            <!-- Step 1: Space Dimensions -->
             <div class="quiz-step active" data-step="1">
-                <h2>What's your preferred style?</h2>
-                <div class="style-options">
-                    <div class="style-option">
-                        <input type="radio" name="style" id="modern" value="modern">
-                        <label for="modern">
-                            <img src="https://i.ebayimg.com/images/g/nVMAAOSwiXdld4kj/s-l1200.jpg" alt="Modern style">
-                            <span>Modern</span>
-                        </label>
+                <h2>Let's analyze your space</h2>
+                <div class="space-measurement">
+                    <div class="form-group">
+                        <label>Upload photos of your space and we'll figure out your space for you (optional):</label>
+                        <div class="image-upload-container">
+                            <input type="file" id="space-image" name="space-image" accept="image/*" class="file-input">
+                            <label for="space-image" class="upload-button">
+                                <i class="fas fa-camera"></i>
+                                Upload Photos
+                            </label>
+                            <p class="upload-tip">Take photos of the wall/area where you plan to place the sofa. The more angles you provide, the better we can assist you!</p>
+                            <div id="image-preview" class="image-preview">
+                                <img src="" alt="Preview" style="display: none;">
+                                <span class="preview-text">No images selected</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="style-option">
-                        <input type="radio" name="style" id="bohemian" value="bohemian">
-                        <label for="bohemian">
-                            <img src="https://media1.popsugar-assets.com/files/thumbor/IuLIipmK8a9boThfVG87TrozkB0=/fit-in/792x792/filters:format_auto():upscale()/2022/03/24/755/n/1922794/d0c7be82a0313310_netimgwzFZPI.webp" alt="Bohemian style">
-                            <span>Bohemian (Boho)</span>
-                        </label>
-                    </div>
-                    <div class="style-option">
-                        <input type="radio" name="style" id="midcentury" value="midcentury">
-                        <label for="midcentury">
-                            <img src="https://brooklynspace.co/cdn/shop/products/stately_green_brooklyn_space_modern_sofa32_3.jpg?v=1701360511&width=1445" alt="Mid-Century Modern style">
-                            <span>Mid-Century Modern</span>
-                        </label>
-                    </div>
-                    <div class="style-option">
-                        <input type="radio" name="style" id="industrial" value="industrial">
-                        <label for="industrial">
-                            <img src="https://foter.com/photos/425/ainsley-73-6-vegan-leather-sofa-1.jpg?s=lbx" alt="Industrial style">
-                            <span>Industrial</span>
-                        </label>
+
+                    <div class="space-analysis">
+                        <div class="room-dimensions">
+                            <h3>Room Dimensions</h3>
+                            <div class="room-size-selector">
+                                <div class="size-options">
+                                    <label class="size-option">
+                                        <input type="radio" name="room-size" value="small" required checked>
+                                        <span class="size-label">Small</span>
+                                        <span class="size-details">&lt;100 sq ft (<10 m²)</span>
+                                    </label>
+                                    <label class="size-option">
+                                        <input type="radio" name="room-size" value="medium" required>
+                                        <span class="size-label">Medium</span>
+                                        <span class="size-details">100-300 sq ft (10-28 m²)</span>
+                                    </label>
+                                    <label class="size-option">
+                                        <input type="radio" name="room-size" value="large" required>
+                                        <span class="size-label">Large</span>
+                                        <span class="size-details">&gt;300 sq ft (>28 m²)</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="sofa-dimensions">
+                            <h3>Maximum Sofa Size</h3>
+                            <div class="dimension-inputs">
+                                <div class="dimension-group">
+                                    <label for="max-length">Maximum Length</label>
+                                    <div class="input-with-unit">
+                                        <input type="number" 
+                                               id="max-length" 
+                                               name="max-length" 
+                                               min="30" 
+                                               max="180" 
+                                               value="50"
+                                               required>
+                                        <span class="unit">inches</span>
+                                    </div>
+                                    <small class="input-help">Longest side of the piece</small>
+                                </div>
+                                <div class="dimension-group">
+                                    <label for="max-depth">Maximum Depth</label>
+                                    <div class="input-with-unit">
+                                        <input type="number" 
+                                               id="max-depth" 
+                                               name="max-depth" 
+                                               min="20" 
+                                               max="60" 
+                                               value="30"
+                                               required>
+                                        <span class="unit">inches</span>
+                                    </div>
+                                    <small class="input-help">Distance from back to front</small>
+                                </div>
+                            </div>
+                            <div class="dimension-visualization">
+                                <div class="sofa-outline" id="sofa-outline">
+                                    <!-- Visual representation of dimensions -->
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Step 2: Space Information -->
+            <!-- Step 2: Style Preferences -->
             <div class="quiz-step" data-step="2">
-                <h2>Tell us about your space</h2>
-                <div class="form-group">
-                    <label for="room-size">Room Size</label>
-                    <div class="input-with-unit">
-                        <input type="number" id="room-size" name="room-size" min="5" max="1000" placeholder="400" required>
-                        <button type="button" class="unit-toggle" id="room-unit-toggle" data-unit="sqft">
-                            sq ft
-                        </button>
-                    </div>
-                    <small class="input-help">Typical living room: 300-400 sq ft (28-37 m²)</small>
+                <h2>What styles catch your eye?</h2>
+                <p class="style-instruction">Click on ALL the images that appeal to you!</p>
+                
+                <div class="style-grid">
+                    <!-- Images will be populated by JavaScript -->
                 </div>
-                <div class="form-group">
-                    <label>Where will the couch be placed?</label>
-                    <select name="placement" required>
-                        <option value="">Select placement</option>
-                        <option value="living-room">Living Room</option>
-                        <option value="family-room">Family Room</option>
-                        <option value="den">Den/Study</option>
-                        <option value="basement">Basement</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Maximum couch dimensions:</label>
-                    <div class="dimensions-input">
-                        <input type="number" name="width" placeholder="84" required>
-                        <input type="number" name="depth" placeholder="38" required>
-                        <input type="number" name="height" placeholder="34" required>
-                    </div>
-                    <small class="input-help">Width × Depth × Height (inches) - Typical 3-seater: 84" × 38" × 34"</small>
-                </div>
-                <div class="form-group">
-                    <label>Upload a photo of your space (optional):</label>
-                    <div class="image-upload-container">
-                        <input type="file" id="space-image" name="space-image" accept="image/*" class="file-input">
-                        <label for="space-image" class="upload-button">
-                            <i class="fas fa-camera"></i>
-                            Upload Photo
-                        </label>
-                        <div id="image-preview" class="image-preview">
-                            <img src="" alt="Preview" style="display: none;">
-                            <span class="preview-text">No image selected</span>
+
+                <div class="style-analysis">
+                    <h3>Your Style Breakdown</h3>
+                    <div class="style-chart">
+                        <div class="chart-bars">
+                            <div class="chart-bar" data-style="Bohemian">
+                                <span class="bar-label">Bohemian</span>
+                                <div class="bar-track">
+                                    <div class="bar-fill"></div>
+                                </div>
+                            </div>
+                            <div class="chart-bar" data-style="Modern">
+                                <span class="bar-label">Modern</span>
+                                <div class="bar-track">
+                                    <div class="bar-fill"></div>
+                                </div>
+                            </div>
+                            <div class="chart-bar" data-style="Midcentury">
+                                <span class="bar-label">Mid-Century</span>
+                                <div class="bar-track">
+                                    <div class="bar-fill"></div>
+                                </div>
+                            </div>
+                            <div class="chart-bar" data-style="Scandinavian">
+                                <span class="bar-label">Scandinavian</span>
+                                <div class="bar-track">
+                                    <div class="bar-fill"></div>
+                                </div>
+                            </div>
+                            <div class="chart-bar" data-style="Traditional">
+                                <span class="bar-label">Traditional</span>
+                                <div class="bar-track">
+                                    <div class="bar-fill"></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Step 3: Usage -->
+            <!-- Step 3: Color Preferences -->
             <div class="quiz-step" data-step="3">
-                <h2>How will you use your couch?</h2>
-                <div class="usage-options">
-                    <div class="form-group">
-                        <label>Primary use:</label>
-                        <div class="checkbox-group">
-                            <label>
-                                <input type="checkbox" name="usage" value="daily-lounging">
-                                Daily lounging
-                            </label>
-                            <label>
-                                <input type="checkbox" name="usage" value="entertaining">
-                                Entertaining guests
-                            </label>
-                            <label>
-                                <input type="checkbox" name="usage" value="napping">
-                                Napping
-                            </label>
-                            <label>
-                                <input type="checkbox" name="usage" value="tv-watching">
-                                TV watching
-                            </label>
+                <h2>What color palette speaks to you?</h2>
+                <p class="selection-tip">Select one or more color styles that match your vision</p>
+                <div class="color-preferences-grid">
+                    <label class="color-option">
+                        <input type="checkbox" name="color-preference" value="neutral">
+                        <div class="color-card">
+                            <div class="color-preview">
+                                <img src="https://maisonai.s3-us-west-2.amazonaws.com/images/neutral.jpg" alt="Neutral color palette" class="color-image">
+                            </div>
+                            <h3>Neutral</h3>
+                            <p>Timeless whites, grays, and beiges</p>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label>How many people should it seat?</label>
-                        <select name="seating" required>
-                            <option value="">Select seating capacity</option>
-                            <option value="2">2 people</option>
-                            <option value="3">3 people</option>
-                            <option value="4">4 people</option>
-                            <option value="5+">5+ people</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Do you have pets?</label>
-                        <div class="radio-group">
-                            <label>
-                                <input type="radio" name="pets" value="yes">
-                                Yes
-                            </label>
-                            <label>
-                                <input type="radio" name="pets" value="no">
-                                No
-                            </label>
+                    </label>
+                    
+                    <label class="color-option">
+                        <input type="checkbox" name="color-preference" value="bold">
+                        <div class="color-card">
+                            <div class="color-preview">
+                                <img src="https://maisonai.s3-us-west-2.amazonaws.com/images/bold.jpg" alt="Bold color palette" class="color-image">
+                            </div>
+                            <h3>Bold</h3>
+                            <p>Vibrant and striking statement colors</p>
                         </div>
-                    </div>
+                    </label>
+                    
+                    <label class="color-option">
+                        <input type="checkbox" name="color-preference" value="earthy">
+                        <div class="color-card">
+                            <div class="color-preview">
+                                <img src="https://maisonai.s3-us-west-2.amazonaws.com/images/earthy.jpg" alt="Earthy color palette" class="color-image">
+                            </div>
+                            <h3>Earthy Tones</h3>
+                            <p>Warm browns, greens, and terracottas</p>
+                        </div>
+                    </label>
                 </div>
             </div>
 
-            <!-- Step 4: Budget -->
+            <!-- Step 4: Comfort Level -->
             <div class="quiz-step" data-step="4">
+                <h2>How do you like your comfort?</h2>
+                <p class="selection-tip">Select one or more comfort levels that appeal to you</p>
+                <div class="comfort-preferences-grid">
+                    <label class="comfort-option">
+                        <input type="checkbox" name="comfort-preference" value="deep-seating">
+                        <div class="comfort-card">
+                            <div class="comfort-preview">
+                                <img src="https://maisonai.s3-us-west-2.amazonaws.com/images/deep_seating.jpg" alt="Deep seating comfort" class="comfort-image">
+                            </div>
+                            <h3>Deep Seating</h3>
+                            <p>Perfect for lounging and sinking in</p>
+                        </div>
+                    </label>
+                    
+                    <label class="comfort-option">
+                        <input type="checkbox" name="comfort-preference" value="soft-cozy">
+                        <div class="comfort-card">
+                            <div class="comfort-preview">
+                                <img src="https://maisonai.s3-us-west-2.amazonaws.com/images/soft_cozy.jpg" alt="Soft and cozy comfort" class="comfort-image">
+                            </div>
+                            <h3>Soft and Cozy</h3>
+                            <p>Plush comfort that hugs you</p>
+                        </div>
+                    </label>
+                    
+                    <label class="comfort-option">
+                        <input type="checkbox" name="comfort-preference" value="medium">
+                        <div class="comfort-card">
+                            <div class="comfort-preview">
+                                <img src="https://maisonai.s3-us-west-2.amazonaws.com/images/medium.jpg" alt="Medium comfort" class="comfort-image">
+                            </div>
+                            <h3>Medium</h3>
+                            <p>Balanced comfort for versatility</p>
+                        </div>
+                    </label>
+                    
+                    <label class="comfort-option">
+                        <input type="checkbox" name="comfort-preference" value="firm">
+                        <div class="comfort-card">
+                            <div class="comfort-preview">
+                                <img src="https://maisonai.s3-us-west-2.amazonaws.com/images/firm.jpg" alt="Firm and supportive comfort" class="comfort-image">
+                            </div>
+                            <h3>Firm and Supportive</h3>
+                            <p>Structured support for easy sitting</p>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Step 5: Special Features -->
+            <div class="quiz-step" data-step="5">
+                <h2>What special features interest you?</h2>
+                <p class="selection-tip">Select any features you'd like in your perfect couch</p>
+                <div class="features-preferences-grid">
+                    <label class="features-option">
+                        <input type="checkbox" name="features-preference" value="reclines">
+                        <div class="features-card">
+                            <div class="features-preview">
+                                <img src="https://maisonai.s3-us-west-2.amazonaws.com/images/functionality/recline.jpg" alt="Reclining feature" class="features-image">
+                            </div>
+                            <h3>Reclines</h3>
+                            <p>Perfect for ultimate relaxation</p>
+                        </div>
+                    </label>
+                    
+                    <label class="features-option">
+                        <input type="checkbox" name="features-preference" value="storage">
+                        <div class="features-card">
+                            <div class="features-preview">
+                                <img src="https://maisonai.s3-us-west-2.amazonaws.com/images/functionality/storage.jpg" alt="Storage feature" class="features-image">
+                            </div>
+                            <h3>Has Storage</h3>
+                            <p>Built-in storage solutions</p>
+                        </div>
+                    </label>
+                    
+                    <label class="features-option">
+                        <input type="checkbox" name="features-preference" value="converts-bed">
+                        <div class="features-card">
+                            <div class="features-preview">
+                                <img src="https://maisonai.s3-us-west-2.amazonaws.com/images/functionality/converts_bed.jpg" alt="Converts to bed feature" class="features-image">
+                            </div>
+                            <h3>Converts to Bed</h3>
+                            <p>Perfect for guests and versatility</p>
+                        </div>
+                    </label>
+                    
+                    <label class="features-option">
+                        <input type="checkbox" name="features-preference" value="easy-clean">
+                        <div class="features-card">
+                            <div class="features-preview">
+                                <img src="https://maisonai.s3-us-west-2.amazonaws.com/images/functionality/easy_clean.jpg" alt="Easy to clean feature" class="features-image">
+                            </div>
+                            <h3>Easy to Clean</h3>
+                            <p>Child and pet-friendly fabric</p>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Step 6: Budget -->
+            <div class="quiz-step" data-step="6">
                 <h2>What's your budget?</h2>
                 <div class="budget-options">
-                    <div class="form-group">
-                        <label for="budget-range">Select your budget range:</label>
-                        <input type="range" id="budget-range" name="budget" min="500" max="5000" step="100">
+                    <div class="form-group budget-slider-container">
+                        <label for="budget-range">Move the slider to set your budget:</label>
                         <div class="budget-display">
-                            <span id="budget-value">$2,750</span>
+                            <span id="budget-value" class="budget-value">$2,750</span>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Preferred payment method:</label>
-                        <select name="payment" required>
-                            <option value="">Select payment method</option>
-                            <option value="full">Full payment</option>
-                            <option value="financing">Financing</option>
-                        </select>
+                        <div class="slider-wrapper">
+                            <div class="budget-markers">
+                                <span>$500</span>
+                                <span>$2,750</span>
+                                <span>$5,000</span>
+                            </div>
+                            <input type="range" 
+                                   id="budget-range" 
+                                   name="budget" 
+                                   min="500" 
+                                   max="5000" 
+                                   step="100" 
+                                   value="2750">
+                            <div class="budget-context">
+                                <span class="budget-label">Budget Friendly</span>
+                                <span class="budget-label">Mid-Range</span>
+                                <span class="budget-label">Premium</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -206,4 +361,4 @@
     <script src="js/main.js"></script>
     <script src="js/quiz.js"></script>
 </body>
-</html> 
+</html>
