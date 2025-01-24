@@ -5,11 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MaisonAI Quiz - Find Your Perfect Match</title>
     
-    <!-- Add this script to handle paths -->
-    <script>
-        window.basePath = window.location.hostname.includes('github.io') ? '/maisonAI' : '';
-    </script>
-
     <!-- CSS Links -->
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/quiz.css">
@@ -367,29 +362,5 @@
 
     <script src="js/main.js"></script>
     <script src="js/quiz.js"></script>
-
-    <!-- Add this script at the end to fix GitHub Pages paths -->
-    <script>
-        if (window.basePath) {
-            // Fix CSS links
-            document.querySelectorAll('link[rel="stylesheet"]').forEach(link => {
-                if (link.href.startsWith(window.location.origin)) {
-                    link.href = basePath + '/' + link.href.split('/').pop();
-                }
-            });
-
-            // Fix navigation links
-            document.querySelectorAll('.nav-links a').forEach(link => {
-                link.href = basePath + '/' + link.href.split('/').pop();
-            });
-
-            // Fix script sources
-            document.querySelectorAll('script[src]').forEach(script => {
-                if (script.src.startsWith(window.location.origin)) {
-                    script.src = basePath + '/' + script.src.split('/').pop();
-                }
-            });
-        }
-    </script>
 </body>
 </html>
