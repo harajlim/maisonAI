@@ -1,4 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Load preferences from localStorage
+    const preferences = JSON.parse(localStorage.getItem('quizPreferences'));
+    
+    if (!preferences) {
+        // If no preferences found, redirect back to quiz
+        window.location.href = 'quiz.html';
+        return;
+    }
+
+    // Update preference tags
+    updatePreferenceTags(preferences);
+
+    // TODO: Use preferences to fetch and display matching furniture
+    // For now, we'll just show the static examples
+
     // Animate score bars on page load
     const scoreElements = document.querySelectorAll('.score-fill');
     scoreElements.forEach(score => {
@@ -182,4 +197,62 @@ document.addEventListener('DOMContentLoaded', () => {
     modal.querySelector('.modal-content').addEventListener('click', (e) => {
         e.stopPropagation();
     });
-}); 
+
+    // Generate additional matches
+    const additionalMatches = document.getElementById('additional-matches');
+    for (let i = 2; i <= 8; i++) {
+        const matchCard = document.createElement('div');
+        matchCard.className = 'result-card';
+        matchCard.innerHTML = `
+            <div class="result-image">
+                <img src="https://maisonai.s3-us-west-2.amazonaws.com/inventory/${i}.jpg" alt="Match ${i}">
+            </div>
+            <div class="result-details">
+                <h3>Stylish Comfort Sofa ${i}</h3>
+                <div class="match-score">
+                    <div class="score-bar">
+                        <div class="score-fill" style="width: ${95 - ((i-1) * 5)}%"></div>
+                    </div>
+                    <span>${95 - ((i-1) * 5)}% Match</span>
+                </div>
+                <div class="features">
+                    <span><i class="fas fa-ruler"></i> 80" × 36" × 32"</span>
+                    <span><i class="fas fa-tag"></i> $${(1500 + (i * 100)).toLocaleString()}</span>
+                </div>
+                <div class="action-buttons">
+                    <a href="#" class="view-details-btn">View Details</a>
+                    <button class="visualize-btn">
+                        <i class="fas fa-camera"></i>
+                        View in Your Room
+                    </button>
+                </div>
+            </div>
+        `;
+        additionalMatches.appendChild(matchCard);
+    }
+});
+
+function updatePreferenceTags(preferences) {
+    const tagsContainer = document.querySelector('.preference-tags');
+    tagsContainer.innerHTML = ''; // Clear existing tags
+
+    // Add style tags
+    preferences.style.forEach(style => {
+        const tag = document.createElement('span');
+        tag.className = 'tag style-tag';
+        tag.textContent = style.style;
+        tagsContainer.appendChild(tag);
+    });
+
+    // Add budget tag
+    const budgetTag = document.createElement('span');
+    budgetTag.className = 'tag budget-tag';
+    budgetTag.textContent = `Budget: $${preferences.budget.toLocaleString()}`;
+    tagsContainer.appendChild(budgetTag);
+
+    // Add room size tag
+    const sizeTag = document.createElement('span');
+    sizeTag.className = 'tag size-tag';
+    sizeTag.textContent = `Room: ${preferences.space.roomSize}`;
+    tagsContainer.appendChild(sizeTag);
+} 

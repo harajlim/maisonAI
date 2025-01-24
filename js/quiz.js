@@ -52,31 +52,24 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize sofa visualization with default values
     updateSofaVisualization(50, 30);
 
-    spaceImage.addEventListener('change', async function(e) {
+    spaceImage.addEventListener('change', function(e) {
         const file = e.target.files[0];
-        if (!file) return;
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const imagePreview = document.getElementById('image-preview');
+                const previewImg = imagePreview.querySelector('img');
+                const previewText = imagePreview.querySelector('.preview-text');
+                
+                previewImg.src = e.target.result;
+                previewImg.style.display = 'block';
+                previewText.style.display = 'none';
 
-        // Show image preview
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            imagePreview.src = e.target.result;
-            imagePreview.style.display = 'block';
-            previewText.style.display = 'none';
-
-            // Update to larger mock dimensions
-            maxLengthInput.value = 90;  // Mock length
-            maxDepthInput.value = 30;   // Mock depth
-
-            // Set mock room size to medium
-            const mediumSizeRadio = document.querySelector('input[name="room-size"][value="medium"]');
-            if (mediumSizeRadio) {
-                mediumSizeRadio.checked = true;
-            }
-
-            // Update visualization
-            updateSofaVisualization(90, 30);
-        };
-        reader.readAsDataURL(file);
+                // Store the image data in the form data
+                window.roomImages = [e.target.result];
+            };
+            reader.readAsDataURL(file);
+        }
     });
 
     // Update visualization when inputs change
@@ -229,48 +222,51 @@ document.addEventListener('DOMContentLoaded', () => {
             const formData = new FormData(quizForm);
             const data = Object.fromEntries(formData);
             
-            // Create a structured client profile
-            const clientProfile = {
-                id: Date.now(), // Unique identifier
-                timestamp: new Date().toISOString(),
-                preferences: {
-                    style: data.style,
-                    roomSize: {
-                        value: data['room-size'],
-                        unit: document.getElementById('room-unit-toggle').dataset.unit
-                    },
-                    placement: data.placement,
+            const preferences = {
+                space: {
+                    roomSize: data['room-size'],
                     dimensions: {
-                        width: data.width,
-                        depth: data.depth,
-                        height: data.height
+                        width: data.width || null,
+                        depth: data.depth || null
                     }
                 },
-                budget: {
-                    amount: data.budget,
-                    paymentMethod: data.payment
-                },
-                designerFeedback: {
-                    status: 'pending',
-                    feedback: '',
-                    timestamp: null
-                }
+                style: getStylePreferences(),
+                colors: Array.from(document.querySelectorAll('input[name="color-preference"]:checked')).map(input => input.value),
+                comfort: Array.from(document.querySelectorAll('input[name="comfort-preference"]:checked')).map(input => input.value),
+                features: Array.from(document.querySelectorAll('input[name="features-preference"]:checked')).map(input => input.value),
+                budget: parseInt(data.budget),
+                timestamp: new Date().toISOString(),
+                roomImages: window.roomImages || [] // Add room images to preferences
             };
             
-            // Save to localStorage
-            localStorage.setItem('quizResults', JSON.stringify(clientProfile));
-            
-            // Also save to a JSON file in the client-profiles directory
-            const profileJson = JSON.stringify(clientProfile, null, 2);
+            localStorage.setItem('quizPreferences', JSON.stringify(preferences));
             
             // Show loading state
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Finding Your Matches...';
             submitBtn.disabled = true;
             
-            // Redirect to results page
-            window.location.href = './results.html';
+            setTimeout(() => {
+                window.location.href = 'results.html';
+            }, 1500);
         }
     });
+
+    // Helper function to get style preferences from the chart
+    function getStylePreferences() {
+        const styles = [];
+        const styleBars = document.querySelectorAll('.chart-bar .bar-fill');
+        styleBars.forEach(bar => {
+            const style = bar.closest('.chart-bar').dataset.style;
+            const percentage = parseFloat(bar.style.width);
+            if (percentage > 0) {
+                styles.push({
+                    style: style,
+                    preference: percentage
+                });
+            }
+        });
+        return styles;
+    }
 
     // Initialize first step
     showStep(currentStep);

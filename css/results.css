@@ -67,9 +67,28 @@
 /* Results Grid */
 .results-grid {
     display: grid;
-    grid-template-columns: 1fr;
     gap: 2rem;
-    margin-bottom: 3rem;
+    padding: 2rem;
+}
+
+.result-card.top-match {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+#additional-matches {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    grid-column: 1 / -1;
+}
+
+@media (min-width: 1200px) {
+    #additional-matches {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 
 /* Result Cards */
@@ -84,15 +103,6 @@
 
 .result-card:hover {
     transform: translateY(-5px);
-}
-
-.top-match {
-    position: relative;
-    border: 2px solid var(--primary-color);
-    grid-column: 1 / -1;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
 }
 
 .match-badge {
@@ -323,7 +333,7 @@
         font-size: 2rem;
     }
 
-    .top-match {
+    .result-card.top-match {
         grid-template-columns: 1fr;
     }
 
