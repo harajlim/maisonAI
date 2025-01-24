@@ -245,24 +245,8 @@ document.addEventListener('DOMContentLoaded', () => {
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Finding Your Matches...';
             submitBtn.disabled = true;
             
-            // Handle different environments
-            let redirectPath;
-            if (window.location.protocol === 'file:') {
-                // Local file system
-                redirectPath = window.location.href.replace('quiz.html', 'results.html');
-            } else if (window.location.hostname === 'localhost') {
-                // Local development server
-                redirectPath = 'results.html';
-            } else {
-                // GitHub Pages
-                const repoName = '/maisonAI'; // Changed to lowercase to match GitHub Pages URL
-                redirectPath = `${repoName}/results.html`;
-            }
-
-            console.log('Redirecting to:', redirectPath);
-            
             setTimeout(() => {
-                window.location.href = redirectPath;
+                window.location.href = 'results.html';
             }, 1500);
         }
     });
