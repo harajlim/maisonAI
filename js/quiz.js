@@ -245,9 +245,9 @@ document.addEventListener('DOMContentLoaded', () => {
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Finding Your Matches...';
             submitBtn.disabled = true;
             
-            // Get the current directory path
-            const currentPath = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
-            const redirectPath = currentPath + 'results.html';
+            // Use window.location.origin to get the base URL
+            const baseUrl = window.location.origin + window.location.pathname.replace('quiz.html', '');
+            const redirectPath = baseUrl + 'results.html';
             
             setTimeout(() => {
                 window.location.href = redirectPath;
