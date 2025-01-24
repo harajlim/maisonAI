@@ -4,11 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MaisonAI Quiz - Find Your Perfect Match</title>
-    <link rel="stylesheet" href="./css/styles.css">
-    <link rel="stylesheet" href="./css/quiz.css">
+    
+    <!-- Add this script to handle paths -->
+    <script>
+        window.basePath = window.location.hostname.includes('github.io') ? '/maisonAI' : '';
+    </script>
+
+    <!-- CSS Links -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/quiz.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./css/quiz-budget.css">
+    <link rel="stylesheet" href="css/quiz-budget.css">
 </head>
 <body>
     <nav class="navbar">
@@ -22,9 +29,9 @@
             <span></span>
         </div>
         <div class="nav-links">
-            <a href="./index.html">Home</a>
-            <a href="./index.html#how-it-works">How It Works</a>
-            <a href="./index.html#features">Features</a>
+            <a href="index.html">Home</a>
+            <a href="index.html#how-it-works">How It Works</a>
+            <a href="index.html#features">Features</a>
         </div>
     </nav>
 
@@ -358,7 +365,31 @@
         </form>
     </main>
 
-    <script src="./js/main.js"></script>
-    <script src="./js/quiz.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/quiz.js"></script>
+
+    <!-- Add this script at the end to fix GitHub Pages paths -->
+    <script>
+        if (window.basePath) {
+            // Fix CSS links
+            document.querySelectorAll('link[rel="stylesheet"]').forEach(link => {
+                if (link.href.startsWith(window.location.origin)) {
+                    link.href = basePath + '/' + link.href.split('/').pop();
+                }
+            });
+
+            // Fix navigation links
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.href = basePath + '/' + link.href.split('/').pop();
+            });
+
+            // Fix script sources
+            document.querySelectorAll('script[src]').forEach(script => {
+                if (script.src.startsWith(window.location.origin)) {
+                    script.src = basePath + '/' + script.src.split('/').pop();
+                }
+            });
+        }
+    </script>
 </body>
 </html>
