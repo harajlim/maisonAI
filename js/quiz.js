@@ -254,10 +254,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Local development server
                 redirectPath = 'results.html';
             } else {
-                // GitHub Pages or production
-                const baseUrl = window.location.pathname.includes('/MaisonAI') ? '/MaisonAI' : '';
-                redirectPath = `${baseUrl}/results.html`;
+                // GitHub Pages
+                const repoName = '/maisonAI'; // Changed to lowercase to match GitHub Pages URL
+                redirectPath = `${repoName}/results.html`;
             }
+
+            console.log('Redirecting to:', redirectPath);
             
             setTimeout(() => {
                 window.location.href = redirectPath;
