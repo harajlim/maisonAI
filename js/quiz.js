@@ -236,7 +236,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 features: Array.from(document.querySelectorAll('input[name="features-preference"]:checked')).map(input => input.value),
                 budget: parseInt(data.budget),
                 timestamp: new Date().toISOString(),
-                roomImages: window.roomImages || [] // Add room images to preferences
+                roomImages: window.roomImages || []
             };
             
             localStorage.setItem('quizPreferences', JSON.stringify(preferences));
@@ -245,8 +245,22 @@ document.addEventListener('DOMContentLoaded', () => {
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Finding Your Matches...';
             submitBtn.disabled = true;
             
+            // Handle different environments
+            let redirectPath;
+            if (window.location.protocol === 'file:') {
+                // Local file system
+                redirectPath = window.location.href.replace('quiz.html', 'results.html');
+            } else if (window.location.hostname === 'localhost') {
+                // Local development server
+                redirectPath = 'results.html';
+            } else {
+                // GitHub Pages or production
+                const baseUrl = window.location.pathname.includes('/MaisonAI') ? '/MaisonAI' : '';
+                redirectPath = `${baseUrl}/results.html`;
+            }
+            
             setTimeout(() => {
-                window.location.href = 'results.html';
+                window.location.href = redirectPath;
             }, 1500);
         }
     });
