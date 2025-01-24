@@ -245,10 +245,9 @@ document.addEventListener('DOMContentLoaded', () => {
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Finding Your Matches...';
             submitBtn.disabled = true;
             
-            // Check if we're in the maisonAI subdirectory (GitHub Pages)
-            const redirectPath = window.location.pathname.includes('/maisonAI/') 
-                ? '/maisonAI/results.html' 
-                : 'results.html';
+            // Get the current directory path
+            const currentPath = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
+            const redirectPath = currentPath + 'results.html';
             
             setTimeout(() => {
                 window.location.href = redirectPath;
