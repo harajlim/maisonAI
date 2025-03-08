@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		F4E8D40B2D7CED21002AC87C /* RoomPlan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4E8D40A2D7CED21002AC87C /* RoomPlan.framework */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		F4E8D3E72D7CD46C002AC87C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +31,7 @@
 		F4E8D3D62D7CD46C002AC87C /* maisonAI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = maisonAI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4E8D3E62D7CD46C002AC87C /* maisonAITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = maisonAITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4E8D3F02D7CD46C002AC87C /* maisonAIUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = maisonAIUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4E8D40A2D7CED21002AC87C /* RoomPlan.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RoomPlan.framework; path = System/Library/Frameworks/RoomPlan.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -52,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4E8D40B2D7CED21002AC87C /* RoomPlan.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +84,7 @@
 				F4E8D3D82D7CD46C002AC87C /* maisonAI */,
 				F4E8D3E92D7CD46C002AC87C /* maisonAITests */,
 				F4E8D3F32D7CD46C002AC87C /* maisonAIUITests */,
+				F4E8D4092D7CED21002AC87C /* Frameworks */,
 				F4E8D3D72D7CD46C002AC87C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -90,6 +97,14 @@
 				F4E8D3F02D7CD46C002AC87C /* maisonAIUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		F4E8D4092D7CED21002AC87C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F4E8D40A2D7CED21002AC87C /* RoomPlan.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -399,6 +414,7 @@
 				DEVELOPMENT_TEAM = P6BMHC8R6H;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Camera access is needed to scan your room and create a 3D model.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -428,6 +444,7 @@
 				DEVELOPMENT_TEAM = P6BMHC8R6H;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Camera access is needed to scan your room and create a 3D model.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
