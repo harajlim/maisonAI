@@ -1,0 +1,563 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXContainerItemProxy section */
+		F4E8D3E72D7CD46C002AC87C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F4E8D3CE2D7CD46B002AC87C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F4E8D3D52D7CD46C002AC87C;
+			remoteInfo = maisonAI;
+		};
+		F4E8D3F12D7CD46C002AC87C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F4E8D3CE2D7CD46B002AC87C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F4E8D3D52D7CD46C002AC87C;
+			remoteInfo = maisonAI;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F4E8D3D62D7CD46C002AC87C /* maisonAI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = maisonAI.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4E8D3E62D7CD46C002AC87C /* maisonAITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = maisonAITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4E8D3F02D7CD46C002AC87C /* maisonAIUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = maisonAIUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		F4E8D3D82D7CD46C002AC87C /* maisonAI */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = maisonAI;
+			sourceTree = "<group>";
+		};
+		F4E8D3E92D7CD46C002AC87C /* maisonAITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = maisonAITests;
+			sourceTree = "<group>";
+		};
+		F4E8D3F32D7CD46C002AC87C /* maisonAIUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = maisonAIUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F4E8D3D32D7CD46C002AC87C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4E8D3E32D7CD46C002AC87C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4E8D3ED2D7CD46C002AC87C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F4E8D3CD2D7CD46B002AC87C = {
+			isa = PBXGroup;
+			children = (
+				F4E8D3D82D7CD46C002AC87C /* maisonAI */,
+				F4E8D3E92D7CD46C002AC87C /* maisonAITests */,
+				F4E8D3F32D7CD46C002AC87C /* maisonAIUITests */,
+				F4E8D3D72D7CD46C002AC87C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F4E8D3D72D7CD46C002AC87C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F4E8D3D62D7CD46C002AC87C /* maisonAI.app */,
+				F4E8D3E62D7CD46C002AC87C /* maisonAITests.xctest */,
+				F4E8D3F02D7CD46C002AC87C /* maisonAIUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F4E8D3D52D7CD46C002AC87C /* maisonAI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F4E8D3FA2D7CD46C002AC87C /* Build configuration list for PBXNativeTarget "maisonAI" */;
+			buildPhases = (
+				F4E8D3D22D7CD46C002AC87C /* Sources */,
+				F4E8D3D32D7CD46C002AC87C /* Frameworks */,
+				F4E8D3D42D7CD46C002AC87C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				F4E8D3D82D7CD46C002AC87C /* maisonAI */,
+			);
+			name = maisonAI;
+			packageProductDependencies = (
+			);
+			productName = maisonAI;
+			productReference = F4E8D3D62D7CD46C002AC87C /* maisonAI.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F4E8D3E52D7CD46C002AC87C /* maisonAITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F4E8D3FD2D7CD46C002AC87C /* Build configuration list for PBXNativeTarget "maisonAITests" */;
+			buildPhases = (
+				F4E8D3E22D7CD46C002AC87C /* Sources */,
+				F4E8D3E32D7CD46C002AC87C /* Frameworks */,
+				F4E8D3E42D7CD46C002AC87C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F4E8D3E82D7CD46C002AC87C /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				F4E8D3E92D7CD46C002AC87C /* maisonAITests */,
+			);
+			name = maisonAITests;
+			packageProductDependencies = (
+			);
+			productName = maisonAITests;
+			productReference = F4E8D3E62D7CD46C002AC87C /* maisonAITests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		F4E8D3EF2D7CD46C002AC87C /* maisonAIUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F4E8D4002D7CD46C002AC87C /* Build configuration list for PBXNativeTarget "maisonAIUITests" */;
+			buildPhases = (
+				F4E8D3EC2D7CD46C002AC87C /* Sources */,
+				F4E8D3ED2D7CD46C002AC87C /* Frameworks */,
+				F4E8D3EE2D7CD46C002AC87C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F4E8D3F22D7CD46C002AC87C /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				F4E8D3F32D7CD46C002AC87C /* maisonAIUITests */,
+			);
+			name = maisonAIUITests;
+			packageProductDependencies = (
+			);
+			productName = maisonAIUITests;
+			productReference = F4E8D3F02D7CD46C002AC87C /* maisonAIUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F4E8D3CE2D7CD46B002AC87C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1610;
+				LastUpgradeCheck = 1610;
+				TargetAttributes = {
+					F4E8D3D52D7CD46C002AC87C = {
+						CreatedOnToolsVersion = 16.1;
+					};
+					F4E8D3E52D7CD46C002AC87C = {
+						CreatedOnToolsVersion = 16.1;
+						TestTargetID = F4E8D3D52D7CD46C002AC87C;
+					};
+					F4E8D3EF2D7CD46C002AC87C = {
+						CreatedOnToolsVersion = 16.1;
+						TestTargetID = F4E8D3D52D7CD46C002AC87C;
+					};
+				};
+			};
+			buildConfigurationList = F4E8D3D12D7CD46B002AC87C /* Build configuration list for PBXProject "maisonAI" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F4E8D3CD2D7CD46B002AC87C;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = F4E8D3D72D7CD46C002AC87C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F4E8D3D52D7CD46C002AC87C /* maisonAI */,
+				F4E8D3E52D7CD46C002AC87C /* maisonAITests */,
+				F4E8D3EF2D7CD46C002AC87C /* maisonAIUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F4E8D3D42D7CD46C002AC87C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4E8D3E42D7CD46C002AC87C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4E8D3EE2D7CD46C002AC87C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F4E8D3D22D7CD46C002AC87C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4E8D3E22D7CD46C002AC87C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4E8D3EC2D7CD46C002AC87C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F4E8D3E82D7CD46C002AC87C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F4E8D3D52D7CD46C002AC87C /* maisonAI */;
+			targetProxy = F4E8D3E72D7CD46C002AC87C /* PBXContainerItemProxy */;
+		};
+		F4E8D3F22D7CD46C002AC87C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F4E8D3D52D7CD46C002AC87C /* maisonAI */;
+			targetProxy = F4E8D3F12D7CD46C002AC87C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		F4E8D3F82D7CD46C002AC87C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F4E8D3F92D7CD46C002AC87C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F4E8D3FB2D7CD46C002AC87C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"maisonAI/Preview Content\"";
+				DEVELOPMENT_TEAM = P6BMHC8R6H;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = harajli.maisonAI;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F4E8D3FC2D7CD46C002AC87C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"maisonAI/Preview Content\"";
+				DEVELOPMENT_TEAM = P6BMHC8R6H;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = harajli.maisonAI;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		F4E8D3FE2D7CD46C002AC87C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = P6BMHC8R6H;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = harajli.maisonAITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/maisonAI.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/maisonAI";
+			};
+			name = Debug;
+		};
+		F4E8D3FF2D7CD46C002AC87C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = P6BMHC8R6H;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = harajli.maisonAITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/maisonAI.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/maisonAI";
+			};
+			name = Release;
+		};
+		F4E8D4012D7CD46C002AC87C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = P6BMHC8R6H;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = harajli.maisonAIUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = maisonAI;
+			};
+			name = Debug;
+		};
+		F4E8D4022D7CD46C002AC87C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = P6BMHC8R6H;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = harajli.maisonAIUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = maisonAI;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F4E8D3D12D7CD46B002AC87C /* Build configuration list for PBXProject "maisonAI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F4E8D3F82D7CD46C002AC87C /* Debug */,
+				F4E8D3F92D7CD46C002AC87C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F4E8D3FA2D7CD46C002AC87C /* Build configuration list for PBXNativeTarget "maisonAI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F4E8D3FB2D7CD46C002AC87C /* Debug */,
+				F4E8D3FC2D7CD46C002AC87C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F4E8D3FD2D7CD46C002AC87C /* Build configuration list for PBXNativeTarget "maisonAITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F4E8D3FE2D7CD46C002AC87C /* Debug */,
+				F4E8D3FF2D7CD46C002AC87C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F4E8D4002D7CD46C002AC87C /* Build configuration list for PBXNativeTarget "maisonAIUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F4E8D4012D7CD46C002AC87C /* Debug */,
+				F4E8D4022D7CD46C002AC87C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F4E8D3CE2D7CD46B002AC87C /* Project object */;
+}
