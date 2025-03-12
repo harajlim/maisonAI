@@ -12,6 +12,7 @@ struct SpaceDetailView: View {
     @State private var jsonData: String = "Loading JSON data..."
     @State private var selectedRoomType: String = "Living Room"
     @State private var roomTypes = ["Bedroom", "Bathroom", "Living Room", "Home Office"]
+    @State private var showingDesignChat = false
     
     // These would be populated from a real API in the future
     @State private var spaceGoals = "Create a minimalist, functional space with natural light and organic materials."
@@ -153,136 +154,56 @@ struct SpaceDetailView: View {
                         }
                     }
                     
-                    // Primary scan button
-                    Button(action: {
-                        showingRoomScan = true
-                    }) {
-                        HStack(spacing: 12) {
-                            Image(systemName: "camera.viewfinder")
-                                .font(.system(size: 24, weight: .semibold))
-                                .foregroundColor(.white)
-                            
-                            Text("Start Room Scan")
-                                .font(.system(size: 20, weight: .semibold))
-                                .tracking(0.5)
-                                .foregroundColor(.white)
-                        }
-                        .frame(maxWidth: .infinity)
-                        .padding(.vertical, 20)
-                        .padding(.horizontal, 24)
-                        .background(
-                            Color(red: 0.45, green: 0.45, blue: 0.45)
-                        )
-                        .cornerRadius(16)
-                        .shadow(
-                            color: Color.black.opacity(0.15),
-                            radius: 8,
-                            x: 0,
-                            y: 2
-                        )
-                    }
-                    .buttonStyle(ScaleButtonStyle())
-                    .padding(.vertical, 8)
-                    .fullScreenCover(isPresented: $showingRoomScan) {
-                        RoomScanView(isPresented: $showingRoomScan)
-                    }
-                    
-                    // Visualization options
-                    ZStack {
-                        Rectangle()
-                            .fill(Color(UIColor.tertiarySystemBackground))
-                            .frame(height: 280)
-                            .cornerRadius(8)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 8)
-                                    .stroke(Color(red: 0.85, green: 0.85, blue: 0.9), lineWidth: 1)
+                    if !hasExistingModel() {
+                        // Primary scan button
+                        Button(action: {
+                            showingRoomScan = true
+                        }) {
+                            HStack(spacing: 12) {
+                                Image(systemName: "camera.viewfinder")
+                                    .font(.system(size: 24, weight: .semibold))
+                                    .foregroundColor(.white)
+                                
+                                Text("Start Room Scan")
+                                    .font(.system(size: 20, weight: .semibold))
+                                    .tracking(0.5)
+                                    .foregroundColor(.white)
+                            }
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 20)
+                            .padding(.horizontal, 24)
+                            .background(
+                                Color(red: 0.45, green: 0.45, blue: 0.45)
                             )
-                        
-                        VStack(spacing: 12) {
-                            // 3D Model Button
+                            .cornerRadius(16)
+                            .shadow(
+                                color: Color.black.opacity(0.15),
+                                radius: 8,
+                                x: 0,
+                                y: 2
+                            )
+                        }
+                        .buttonStyle(ScaleButtonStyle())
+                        .padding(.vertical, 8)
+                        .fullScreenCover(isPresented: $showingRoomScan) {
+                            RoomScanView(isPresented: $showingRoomScan)
+                        }
+                    } else {
+                        // Visualization options as a dropdown menu
+                        Menu {
                             Button(action: {
                                 showingQuickLook = true
                             }) {
-                                HStack(spacing: 16) {
-                                    Image(systemName: "cube.transparent.fill")
-                                        .font(.system(size: 24))
-                                        .foregroundColor(.blue)
-                                    
-                                    VStack(alignment: .leading, spacing: 2) {
-                                        Text("3D Model")
-                                            .font(.system(size: 16, weight: .medium))
-                                            .foregroundColor(.blue)
-                                        
-                                        Text("View scanned room")
-                                            .font(.system(size: 14, weight: .light))
-                                            .foregroundColor(.secondary)
-                                    }
-                                    
-                                    Spacer()
-                                    
-                                    Image(systemName: "chevron.right")
-                                        .font(.system(size: 14))
-                                        .foregroundColor(.blue.opacity(0.7))
-                                }
-                                .frame(maxWidth: .infinity)
-                                .padding(.vertical, 16)
-                                .padding(.horizontal, 20)
-                                .background(
-                                    RoundedRectangle(cornerRadius: 8)
-                                        .fill(Color.blue.opacity(0.05))
-                                )
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 8)
-                                        .stroke(Color.blue.opacity(0.1), lineWidth: 1)
-                                )
-                            }
-                            .sheet(isPresented: $showingQuickLook) {
-                                QuickLookPreview(url: getUSDZFilePath())
+                                Label("3D Model", systemImage: "cube.transparent.fill")
                             }
                             
-                            // Detailed 3D Model Button
                             Button(action: {
                                 let jsonURL = getJSONFilePath()
                                 showJSONViewer(for: jsonURL)
                             }) {
-                                HStack(spacing: 16) {
-                                    Image(systemName: "cube.transparent")
-                                        .font(.system(size: 24))
-                                        .foregroundColor(.green)
-                                    
-                                    VStack(alignment: .leading, spacing: 2) {
-                                        Text("Detailed 3D")
-                                            .font(.system(size: 16, weight: .medium))
-                                            .foregroundColor(.green)
-                                        
-                                        Text("Scanned Room With Objects")
-                                            .font(.system(size: 14, weight: .light))
-                                            .foregroundColor(.secondary)
-                                    }
-                                    
-                                    Spacer()
-                                    
-                                    Image(systemName: "chevron.right")
-                                        .font(.system(size: 14))
-                                        .foregroundColor(.green.opacity(0.7))
-                                }
-                                .frame(maxWidth: .infinity)
-                                .padding(.vertical, 16)
-                                .padding(.horizontal, 20)
-                                .background(
-                                    RoundedRectangle(cornerRadius: 8)
-                                        .fill(Color.green.opacity(0.05))
-                                )
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 8)
-                                        .stroke(Color.green.opacity(0.1), lineWidth: 1)
-                                )
-                            }
-                            .sheet(isPresented: $showingJSONPopup) {
-                                JSONDataView(jsonString: jsonData, isPresented: $showingJSONPopup)
+                                Label("Detailed 3D", systemImage: "cube.transparent")
                             }
                             
-                            // Plan View Button
                             Button(action: {
                                 if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
                                    let rootViewController = windowScene.windows.first?.rootViewController {
@@ -291,42 +212,55 @@ struct SpaceDetailView: View {
                                     rootViewController.present(planViewController, animated: true)
                                 }
                             }) {
-                                HStack(spacing: 16) {
-                                    Image(systemName: "square.split.2x2")
-                                        .font(.system(size: 24))
-                                        .foregroundColor(.purple)
-                                    
-                                    VStack(alignment: .leading, spacing: 2) {
-                                        Text("Plan View")
-                                            .font(.system(size: 16, weight: .medium))
-                                            .foregroundColor(.purple)
-                                        
-                                        Text("2D floor plan")
-                                            .font(.system(size: 14, weight: .light))
-                                            .foregroundColor(.secondary)
-                                    }
-                                    
-                                    Spacer()
-                                    
-                                    Image(systemName: "chevron.right")
-                                        .font(.system(size: 14))
-                                        .foregroundColor(.purple.opacity(0.7))
-                                }
-                                .frame(maxWidth: .infinity)
-                                .padding(.vertical, 16)
-                                .padding(.horizontal, 20)
-                                .background(
-                                    RoundedRectangle(cornerRadius: 8)
-                                        .fill(Color.purple.opacity(0.05))
-                                )
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 8)
-                                        .stroke(Color.purple.opacity(0.1), lineWidth: 1)
-                                )
+                                Label("Plan View", systemImage: "square.split.2x2")
                             }
+                        } label: {
+                            HStack {
+                                Image(systemName: "cube.transparent.fill")
+                                    .font(.system(size: 16))
+                                Text("View Scanned Space")
+                                    .font(.system(size: 16, weight: .medium))
+                                Spacer()
+                                Image(systemName: "chevron.down")
+                                    .font(.system(size: 12))
+                                    .foregroundColor(.secondary)
+                            }
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .background(Color(UIColor.tertiarySystemBackground))
+                            .cornerRadius(8)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 8)
+                                    .stroke(Color.primary.opacity(0.1), lineWidth: 0.5)
+                            )
                         }
-                        .padding(.horizontal, 16)
-                        .padding(.vertical, 12)
+                        .sheet(isPresented: $showingQuickLook) {
+                            QuickLookPreview(url: getUSDZFilePath())
+                        }
+                        
+                        // New scan button as a secondary option
+                        Button(action: {
+                            showingRoomScan = true
+                        }) {
+                            HStack {
+                                Image(systemName: "camera.viewfinder")
+                                    .font(.system(size: 14))
+                                Text("New Scan")
+                                    .font(.system(size: 14, weight: .medium))
+                            }
+                            .padding(.vertical, 8)
+                            .padding(.horizontal, 16)
+                            .background(Color(UIColor.tertiarySystemBackground))
+                            .cornerRadius(8)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 8)
+                                    .stroke(Color.primary.opacity(0.1), lineWidth: 0.5)
+                            )
+                        }
+                        .buttonStyle(ScaleButtonStyle())
+                        .fullScreenCover(isPresented: $showingRoomScan) {
+                            RoomScanView(isPresented: $showingRoomScan)
+                        }
                     }
                 }
                 .padding(20)
@@ -341,7 +275,7 @@ struct SpaceDetailView: View {
                 
                 // Chat to an AI Designer button (moved above Curated For You section)
                 Button(action: {
-                    // Action for chatting with AI designer
+                    showingDesignChat = true
                 }) {
                     HStack {
                         Image(systemName: "message.fill")
@@ -365,6 +299,9 @@ struct SpaceDetailView: View {
                     .shadow(color: Color.black.opacity(0.08), radius: 8, x: 0, y: 2)
                 }
                 .buttonStyle(ScaleButtonStyle())
+                .fullScreenCover(isPresented: $showingDesignChat) {
+                    DesignChat()
+                }
                 .padding(.vertical, 20)
                 
                 // Curated items section
@@ -451,6 +388,11 @@ struct SpaceDetailView: View {
             // Show an alert that the file doesn't exist
             print("JSON file not found at: \(url.path)")
         }
+    }
+    
+    private func hasExistingModel() -> Bool {
+        let jsonPath = getJSONFilePath()
+        return FileManager.default.fileExists(atPath: jsonPath.path)
     }
 }
 
