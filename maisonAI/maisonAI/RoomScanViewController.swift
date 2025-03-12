@@ -83,5 +83,22 @@ extension RoomScanViewController: RoomCaptureViewDelegate {
         } catch {
             print("Error exporting processed scan: \(error)")
         }
+
+        // Save to the app's shared documents directory (visible in Files app)
+        guard let sharedPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
+            print("Error getting shared documents path")
+            return
+        }
+        
+        let jsonURL = sharedPath.appendingPathComponent("room_data.json")
+        do {
+            let jsonEncoder = JSONEncoder()
+            jsonEncoder.outputFormatting = .prettyPrinted  // Makes the JSON readable
+            let jsonData = try jsonEncoder.encode(processedResult)
+            try jsonData.write(to: jsonURL)
+            print("Room data saved and accessible in Files app at: \(jsonURL)")
+        } catch {
+            print("Error archiving room data as JSON: \(error)")
+        }
     }
 } 

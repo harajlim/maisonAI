@@ -51,7 +51,7 @@ struct LandingView: View {
                             SpaceDetailView(space: Project(name: "New Space", date: Date(), thumbnail: "square.grid.2x2", color: .black))
                         } label: {
                             HStack {
-                                Text("Create New Space")
+                                Text("Design New Space")
                                     .font(.system(size: 16, weight: .medium))
                                     .tracking(1)
                                 Spacer()
@@ -59,25 +59,30 @@ struct LandingView: View {
                                     .font(.system(size: 16, weight: .medium))
                             }
                             .frame(maxWidth: .infinity)
-                            .padding(.vertical, 18)
+                            .padding(.vertical, 22)
                             .padding(.horizontal, 24)
                             .background(
                                 RoundedRectangle(cornerRadius: 8)
-                                    .fill(Color.primary.opacity(0.05))
+                                    .fill(
+                                        Color(red: 0.85, green: 0.78, blue: 0.7)
+                                    )
                             )
                             .overlay(
                                 RoundedRectangle(cornerRadius: 8)
-                                    .stroke(Color.primary.opacity(0.1), lineWidth: 0.5)
+                                    .stroke(Color(red: 0.75, green: 0.68, blue: 0.6), lineWidth: 1.5)
                             )
-                            .foregroundColor(.primary)
+                            .foregroundColor(Color(red: 0.25, green: 0.22, blue: 0.2))
+                            .shadow(color: Color.black.opacity(0.08), radius: 8, x: 0, y: 2)
                         }
                         .buttonStyle(ScaleButtonStyle())
+                        .padding(.bottom, 30)
                         
                         // Projects Section - minimalist grid
                         VStack(alignment: .leading, spacing: 24) {
-                            Text("Your Spaces")
+                            Text("Your Designed Spaces")
                                 .font(.system(size: 20, weight: .medium))
                                 .tracking(1)
+                                .padding(.top, 20)
                             
                             if projects.isEmpty {
                                 EmptyProjectsView()
@@ -268,10 +273,10 @@ struct ScaleButtonStyle: ButtonStyle {
 
 // Sample data
 let sampleProjects = [
-    Project(name: "Serene Sanctuary", date: Date().addingTimeInterval(-86400 * 2), thumbnail: "square.grid.2x2", color: .black),
-    Project(name: "Urban Retreat", date: Date().addingTimeInterval(-86400 * 7), thumbnail: "square.grid.3x3", color: .black),
-    Project(name: "Creative Haven", date: Date().addingTimeInterval(-86400 * 14), thumbnail: "square.grid.4x3.fill", color: .black),
-    Project(name: "Minimalist Oasis", date: Date().addingTimeInterval(-86400 * 21), thumbnail: "square.grid.2x2.fill", color: .black)
+    Project(name: "Daughter's Bedroom", date: Date().addingTimeInterval(-86400 * 2), thumbnail: "bed.double.fill", color: .black),
+    // Project(name: "Urban Retreat", date: Date().addingTimeInterval(-86400 * 7), thumbnail: "square.grid.3x3", color: .black),
+    // Project(name: "Creative Haven", date: Date().addingTimeInterval(-86400 * 14), thumbnail: "square.grid.4x3.fill", color: .black),
+    // Project(name: "Minimalist Oasis", date: Date().addingTimeInterval(-86400 * 21), thumbnail: "square.grid.2x2.fill", color: .black)
 ]
 
 #Preview {

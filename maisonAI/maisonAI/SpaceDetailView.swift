@@ -8,6 +8,10 @@ struct SpaceDetailView: View {
     @State private var isEditingName = false
     @State private var showingRoomScan = false
     @State private var showingQuickLook = false
+    @State private var showingJSONPopup = false
+    @State private var jsonData: String = "Loading JSON data..."
+    @State private var selectedRoomType: String = "Living Room"
+    @State private var roomTypes = ["Bedroom", "Bathroom", "Living Room", "Home Office"]
     
     // These would be populated from a real API in the future
     @State private var spaceGoals = "Create a minimalist, functional space with natural light and organic materials."
@@ -31,7 +35,7 @@ struct SpaceDetailView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 40) {
                 // Header with editable name
-                VStack(alignment: .leading, spacing: 8) {
+                VStack(alignment: .leading, spacing: 16) {
                     if isEditingName {
                         TextField("Space Name", text: $space.name)
                             .font(.system(size: 28, weight: .light))
@@ -48,27 +52,84 @@ struct SpaceDetailView: View {
                                 isEditingName = false
                             }
                     } else {
-                        Text(space.name)
-                            .font(.system(size: 28, weight: .light))
-                            .tracking(1)
-                            .onTapGesture {
-                                isEditingName = true
+                        HStack(alignment: .center, spacing: 8) {
+                            Text(space.name)
+                                .font(.system(size: 28, weight: .light))
+                                .tracking(1)
+                            
+                            // Edit indicator
+                            Image(systemName: "pencil.circle")
+                                .font(.system(size: 18))
+                                .foregroundColor(.blue)
+                                .opacity(0.8)
+                        }
+                        .onTapGesture {
+                            isEditingName = true
+                        }
+                    }
+                    
+                    // Room type dropdown
+                    Menu {
+                        ForEach(roomTypes, id: \.self) { roomType in
+                            Button(action: {
+                                selectedRoomType = roomType
+                            }) {
+                                Text(roomType)
+                                if selectedRoomType == roomType {
+                                    Image(systemName: "checkmark")
+                                }
                             }
+                        }
+                    } label: {
+                        HStack {
+                            Text(selectedRoomType)
+                                .font(.system(size: 16, weight: .medium))
+                            
+                            Spacer()
+                            
+                            Image(systemName: "chevron.down")
+                                .font(.system(size: 14))
+                                .foregroundColor(.secondary)
+                        }
+                        .padding(.vertical, 8)
+                        .padding(.horizontal, 12)
+                        .background(
+                            RoundedRectangle(cornerRadius: 8)
+                                .fill(Color(UIColor.tertiarySystemBackground))
+                        )
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke(Color.primary.opacity(0.1), lineWidth: 0.5)
+                        )
                     }
                     
                     Text("Last updated \(space.date, format: .dateTime.month().day().year())")
                         .font(.system(size: 14, weight: .light))
                         .foregroundColor(.secondary)
                 }
-                .padding(.top, 20)
+                .padding(20)
+                .background(
+                    RoundedRectangle(cornerRadius: 12)
+                        .fill(Color(UIColor.systemBackground))
+                )
+                .overlay(
+                    RoundedRectangle(cornerRadius: 12)
+                        .stroke(Color(red: 0.9, green: 0.9, blue: 0.9), lineWidth: 1)
+                )
+                .padding(.bottom, 20)
                 
                 // Space visualization section
                 VStack(alignment: .leading, spacing: 24) {
                     // Section header with space layout title
                     HStack(alignment: .center) {
-                        Text("Space Layout")
-                            .font(.system(size: 20, weight: .medium))
-                            .tracking(1)
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text("Space Layout")
+                                .font(.system(size: 20, weight: .medium))
+                                .tracking(1)
+                            Text("Your Architectural Drawings")
+                                .font(.system(size: 14, weight: .light))
+                                .foregroundColor(.secondary)
+                        }
                         
                         Spacer()
                         
@@ -78,7 +139,17 @@ struct SpaceDetailView: View {
                         }) {
                             Text("Manual Entry")
                                 .font(.system(size: 14, weight: .medium))
-                                .foregroundColor(.blue)
+                                .foregroundColor(Color(red: 0.4, green: 0.4, blue: 0.45))
+                                .padding(.vertical, 6)
+                                .padding(.horizontal, 12)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 6)
+                                        .fill(Color(red: 0.95, green: 0.95, blue: 0.97))
+                                )
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 6)
+                                        .stroke(Color(red: 0.85, green: 0.85, blue: 0.9), lineWidth: 0.5)
+                                )
                         }
                     }
                     
@@ -86,151 +157,215 @@ struct SpaceDetailView: View {
                     Button(action: {
                         showingRoomScan = true
                     }) {
-                        HStack {
+                        HStack(spacing: 12) {
                             Image(systemName: "camera.viewfinder")
-                                .font(.system(size: 16, weight: .medium))
+                                .font(.system(size: 24, weight: .semibold))
+                                .foregroundColor(.white)
+                            
                             Text("Start Room Scan")
-                                .font(.system(size: 16, weight: .medium))
+                                .font(.system(size: 20, weight: .semibold))
                                 .tracking(0.5)
-                            Spacer()
-                            Image(systemName: "chevron.right")
-                                .font(.system(size: 14, weight: .medium))
-                                .foregroundColor(.secondary)
+                                .foregroundColor(.white)
                         }
                         .frame(maxWidth: .infinity)
-                        .padding(.vertical, 16)
-                        .padding(.horizontal, 20)
+                        .padding(.vertical, 20)
+                        .padding(.horizontal, 24)
                         .background(
-                            RoundedRectangle(cornerRadius: 8)
-                                .fill(Color.blue.opacity(0.1))
+                            Color(red: 0.45, green: 0.45, blue: 0.45)
                         )
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 8)
-                                .stroke(Color.blue.opacity(0.2), lineWidth: 0.5)
+                        .cornerRadius(16)
+                        .shadow(
+                            color: Color.black.opacity(0.15),
+                            radius: 8,
+                            x: 0,
+                            y: 2
                         )
-                        .foregroundColor(.blue)
                     }
+                    .buttonStyle(ScaleButtonStyle())
+                    .padding(.vertical, 8)
                     .fullScreenCover(isPresented: $showingRoomScan) {
                         RoomScanView(isPresented: $showingRoomScan)
                     }
                     
-                    // Placeholder for 3D model/floor plan
+                    // Visualization options
                     ZStack {
                         Rectangle()
                             .fill(Color(UIColor.tertiarySystemBackground))
-                            .frame(height: 240)
+                            .frame(height: 280)
+                            .cornerRadius(8)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 8)
-                                    .stroke(Color.primary.opacity(0.1), lineWidth: 0.5)
+                                    .stroke(Color(red: 0.85, green: 0.85, blue: 0.9), lineWidth: 1)
                             )
                         
-                        if FileManager.default.fileExists(atPath: getUSDZFilePath().path) {
+                        VStack(spacing: 12) {
+                            // 3D Model Button
                             Button(action: {
                                 showingQuickLook = true
                             }) {
-                                VStack(spacing: 12) {
+                                HStack(spacing: 16) {
                                     Image(systemName: "cube.transparent.fill")
-                                        .font(.system(size: 40))
+                                        .font(.system(size: 24))
                                         .foregroundColor(.blue)
                                     
-                                    Text("View 3D Model")
-                                        .font(.system(size: 16, weight: .medium))
-                                        .foregroundColor(.blue)
+                                    VStack(alignment: .leading, spacing: 2) {
+                                        Text("3D Model")
+                                            .font(.system(size: 16, weight: .medium))
+                                            .foregroundColor(.blue)
+                                        
+                                        Text("View scanned room")
+                                            .font(.system(size: 14, weight: .light))
+                                            .foregroundColor(.secondary)
+                                    }
                                     
-                                    Text("Tap to view your scanned room")
-                                        .font(.system(size: 14, weight: .light))
-                                        .foregroundColor(.secondary)
-                                        .multilineTextAlignment(.center)
-                                        .padding(.horizontal, 20)
+                                    Spacer()
+                                    
+                                    Image(systemName: "chevron.right")
+                                        .font(.system(size: 14))
+                                        .foregroundColor(.blue.opacity(0.7))
                                 }
+                                .frame(maxWidth: .infinity)
+                                .padding(.vertical, 16)
+                                .padding(.horizontal, 20)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .fill(Color.blue.opacity(0.05))
+                                )
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .stroke(Color.blue.opacity(0.1), lineWidth: 1)
+                                )
                             }
                             .sheet(isPresented: $showingQuickLook) {
                                 QuickLookPreview(url: getUSDZFilePath())
                             }
-                        } else {
-                            VStack(spacing: 12) {
-                                Image(systemName: "cube.transparent")
-                                    .font(.system(size: 40))
-                                    .foregroundColor(.secondary)
-                                
-                                Text("3D Model / Floor Plan")
-                                    .font(.system(size: 16, weight: .medium))
-                                    .foregroundColor(.secondary)
-                                
-                                Text("Create a floor plan to visualize your space")
-                                    .font(.system(size: 14, weight: .light))
-                                    .foregroundColor(.secondary.opacity(0.8))
-                                    .multilineTextAlignment(.center)
-                                    .padding(.horizontal, 20)
-                            }
-                        }
-                    }
-                }
-                
-                // Goals section - directly editable
-                VStack(alignment: .leading, spacing: 16) {
-                    Text("Design Goals")
-                        .font(.system(size: 20, weight: .medium))
-                        .tracking(1)
-                    
-                    TextEditor(text: $spaceGoals)
-                        .font(.system(size: 16, weight: .light))
-                        .lineSpacing(6)
-                        .frame(minHeight: 100)
-                        .padding(12)
-                        .background(
-                            RoundedRectangle(cornerRadius: 8)
-                                .fill(Color(UIColor.tertiarySystemBackground))
-                        )
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 8)
-                                .stroke(Color.primary.opacity(0.1), lineWidth: 0.5)
-                        )
-                }
-                
-                // Inspiration images
-                VStack(alignment: .leading, spacing: 16) {
-                    SectionHeader(title: "Inspiration", actionTitle: "Add") {
-                        // Action to add inspiration images
-                    }
-                    
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: 16) {
-                            // In a real app, these would be actual images
-                            ForEach(0..<3, id: \.self) { _ in
-                                ZStack {
-                                    Rectangle()
-                                        .fill(Color(UIColor.tertiarySystemBackground))
-                                        .frame(width: 200, height: 150)
-                                        .overlay(
-                                            RoundedRectangle(cornerRadius: 8)
-                                                .stroke(Color.primary.opacity(0.1), lineWidth: 0.5)
-                                        )
+                            
+                            // Detailed 3D Model Button
+                            Button(action: {
+                                let jsonURL = getJSONFilePath()
+                                showJSONViewer(for: jsonURL)
+                            }) {
+                                HStack(spacing: 16) {
+                                    Image(systemName: "cube.transparent")
+                                        .font(.system(size: 24))
+                                        .foregroundColor(.green)
                                     
-                                    Image(systemName: "photo")
-                                        .font(.system(size: 30))
-                                        .foregroundColor(.secondary)
+                                    VStack(alignment: .leading, spacing: 2) {
+                                        Text("Detailed 3D")
+                                            .font(.system(size: 16, weight: .medium))
+                                            .foregroundColor(.green)
+                                        
+                                        Text("Scanned Room With Objects")
+                                            .font(.system(size: 14, weight: .light))
+                                            .foregroundColor(.secondary)
+                                    }
+                                    
+                                    Spacer()
+                                    
+                                    Image(systemName: "chevron.right")
+                                        .font(.system(size: 14))
+                                        .foregroundColor(.green.opacity(0.7))
                                 }
+                                .frame(maxWidth: .infinity)
+                                .padding(.vertical, 16)
+                                .padding(.horizontal, 20)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .fill(Color.green.opacity(0.05))
+                                )
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .stroke(Color.green.opacity(0.1), lineWidth: 1)
+                                )
+                            }
+                            .sheet(isPresented: $showingJSONPopup) {
+                                JSONDataView(jsonString: jsonData, isPresented: $showingJSONPopup)
                             }
                             
-                            // Add inspiration button
-                            ZStack {
-                                Rectangle()
-                                    .fill(Color(UIColor.tertiarySystemBackground))
-                                    .frame(width: 100, height: 150)
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 8)
-                                            .stroke(Color.primary.opacity(0.1), lineWidth: 0.5)
-                                    )
-                                
-                                Image(systemName: "plus")
-                                    .font(.system(size: 30))
-                                    .foregroundColor(.secondary)
+                            // Plan View Button
+                            Button(action: {
+                                if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                                   let rootViewController = windowScene.windows.first?.rootViewController {
+                                    let planViewController = RoomPlanViewController()
+                                    planViewController.modalPresentationStyle = .fullScreen
+                                    rootViewController.present(planViewController, animated: true)
+                                }
+                            }) {
+                                HStack(spacing: 16) {
+                                    Image(systemName: "square.split.2x2")
+                                        .font(.system(size: 24))
+                                        .foregroundColor(.purple)
+                                    
+                                    VStack(alignment: .leading, spacing: 2) {
+                                        Text("Plan View")
+                                            .font(.system(size: 16, weight: .medium))
+                                            .foregroundColor(.purple)
+                                        
+                                        Text("2D floor plan")
+                                            .font(.system(size: 14, weight: .light))
+                                            .foregroundColor(.secondary)
+                                    }
+                                    
+                                    Spacer()
+                                    
+                                    Image(systemName: "chevron.right")
+                                        .font(.system(size: 14))
+                                        .foregroundColor(.purple.opacity(0.7))
+                                }
+                                .frame(maxWidth: .infinity)
+                                .padding(.vertical, 16)
+                                .padding(.horizontal, 20)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .fill(Color.purple.opacity(0.05))
+                                )
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .stroke(Color.purple.opacity(0.1), lineWidth: 1)
+                                )
                             }
                         }
-                        .padding(.horizontal, 2)
+                        .padding(.horizontal, 16)
+                        .padding(.vertical, 12)
                     }
                 }
+                .padding(20)
+                .background(
+                    RoundedRectangle(cornerRadius: 12)
+                        .fill(Color(UIColor.secondarySystemBackground).opacity(0.5))
+                )
+                .overlay(
+                    RoundedRectangle(cornerRadius: 12)
+                        .stroke(Color(red: 0.9, green: 0.9, blue: 0.9), lineWidth: 1)
+                )
+                
+                // Chat to an AI Designer button (moved above Curated For You section)
+                Button(action: {
+                    // Action for chatting with AI designer
+                }) {
+                    HStack {
+                        Image(systemName: "message.fill")
+                            .font(.system(size: 16))
+                        
+                        Text("Lets Design Your Space")
+                            .font(.system(size: 16, weight: .medium))
+                            .tracking(0.5)
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 18)
+                    .background(
+                        RoundedRectangle(cornerRadius: 8)
+                            .fill(Color(red: 0.85, green: 0.78, blue: 0.7))
+                    )
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(Color(red: 0.75, green: 0.68, blue: 0.6), lineWidth: 1.5)
+                    )
+                    .foregroundColor(Color(red: 0.25, green: 0.22, blue: 0.2))
+                    .shadow(color: Color.black.opacity(0.08), radius: 8, x: 0, y: 2)
+                }
+                .buttonStyle(ScaleButtonStyle())
+                .padding(.vertical, 20)
                 
                 // Curated items section
                 VStack(alignment: .leading, spacing: 16) {
@@ -264,28 +399,15 @@ struct SpaceDetailView: View {
                         .padding(.vertical, 40)
                     }
                 }
-                
-                // Generate/Update design button
-                Button(action: {
-                    // Action for generating/updating design
-                }) {
-                    Text(designElements.isEmpty ? "Curate For Me" : "Update Curated Items")
-                        .font(.system(size: 16, weight: .medium))
-                        .tracking(1)
-                        .frame(maxWidth: .infinity)
-                        .padding(.vertical, 18)
-                        .background(
-                            RoundedRectangle(cornerRadius: 8)
-                                .fill(Color.blue.opacity(0.1))
-                        )
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 8)
-                                .stroke(Color.blue.opacity(0.2), lineWidth: 0.5)
-                        )
-                        .foregroundColor(.blue)
-                }
-                .buttonStyle(ScaleButtonStyle())
-                .padding(.vertical, 20)
+                .padding(20)
+                .background(
+                    RoundedRectangle(cornerRadius: 12)
+                        .fill(Color(UIColor.secondarySystemBackground).opacity(0.5))
+                )
+                .overlay(
+                    RoundedRectangle(cornerRadius: 12)
+                        .stroke(Color(red: 0.9, green: 0.9, blue: 0.9), lineWidth: 1)
+                )
             }
             .padding(.horizontal, 24)
             .padding(.bottom, 40)
@@ -306,6 +428,29 @@ struct SpaceDetailView: View {
     private func getUSDZFilePath() -> URL {
         let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         return documentsPath.appendingPathComponent("roomscan_processed.usdz")
+    }
+    
+    private func getJSONFilePath() -> URL {
+        let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        return documentsPath.appendingPathComponent("room_data.json")
+    }
+    
+    private func showJSONViewer(for url: URL) {
+        if FileManager.default.fileExists(atPath: url.path) {
+            let viewController = UIHostingController(rootView: 
+                JSONViewerView(jsonURL: url)
+                    .edgesIgnoringSafeArea(.all)
+            )
+            
+            // Present the view controller
+            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+               let rootViewController = windowScene.windows.first?.rootViewController {
+                rootViewController.present(viewController, animated: true)
+            }
+        } else {
+            // Show an alert that the file doesn't exist
+            print("JSON file not found at: \(url.path)")
+        }
     }
 }
 
@@ -565,5 +710,78 @@ struct QuickLookWrapper: UIViewControllerRepresentable {
         func previewController(_ controller: QLPreviewController, previewItemAt index: Int) -> QLPreviewItem {
             return parent.url as QLPreviewItem
         }
+    }
+}
+
+// JSON Data View
+struct JSONDataView: View {
+    let jsonString: String
+    @Binding var isPresented: Bool
+    
+    var body: some View {
+        NavigationView {
+            ScrollView {
+                if jsonString.starts(with: "Loading") {
+                    VStack(spacing: 20) {
+                        ProgressView()
+                            .padding()
+                        Text("Loading JSON data...")
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .padding(.top, 100)
+                } else if jsonString.starts(with: "Error") || jsonString.starts(with: "JSON file not found") {
+                    VStack(spacing: 20) {
+                        Image(systemName: "exclamationmark.triangle.fill")
+                            .font(.system(size: 50))
+                            .foregroundColor(.orange)
+                            .padding()
+                        
+                        Text(jsonString)
+                            .font(.system(.body))
+                            .multilineTextAlignment(.center)
+                            .padding()
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding(.top, 100)
+                } else {
+                    Text(jsonString)
+                        .font(.system(.body, design: .monospaced))
+                        .padding()
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
+            }
+            .navigationBarTitle("Room Data JSON", displayMode: .inline)
+            .navigationBarItems(trailing: Button("Close") {
+                isPresented = false
+            })
+            .onAppear {
+                print("JSONDataView appeared with data: \(jsonString.prefix(100))...")
+            }
+        }
+    }
+}
+
+// JSON Viewer View
+struct JSONViewerView: View {
+    let jsonURL: URL
+    @Environment(\.presentationMode) var presentationMode
+    
+    var body: some View {
+        RoomModelViewControllerRepresentable()
+            .edgesIgnoringSafeArea(.all)
+            .navigationBarItems(trailing: Button("Close") {
+                presentationMode.wrappedValue.dismiss()
+            })
+    }
+}
+
+// SwiftUI wrapper for RoomModelViewController
+struct RoomModelViewControllerRepresentable: UIViewControllerRepresentable {
+    func makeUIViewController(context: Context) -> RoomModelViewController {
+        return RoomModelViewController()
+    }
+    
+    func updateUIViewController(_ uiViewController: RoomModelViewController, context: Context) {
+        // No updates needed
     }
 } 
