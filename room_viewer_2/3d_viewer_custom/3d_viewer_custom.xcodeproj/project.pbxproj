@@ -1,0 +1,569 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXContainerItemProxy section */
+		F48A72332D926A3A000E1EF0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F48A72192D926A39000E1EF0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F48A72202D926A39000E1EF0;
+			remoteInfo = 3d_viewer_custom;
+		};
+		F48A723D2D926A3A000E1EF0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F48A72192D926A39000E1EF0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F48A72202D926A39000E1EF0;
+			remoteInfo = 3d_viewer_custom;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F48A72212D926A39000E1EF0 /* 3d_viewer_custom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 3d_viewer_custom.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F48A72322D926A3A000E1EF0 /* 3d_viewer_customTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = 3d_viewer_customTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F48A723C2D926A3A000E1EF0 /* 3d_viewer_customUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = 3d_viewer_customUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		F48A728C2D9CE704000E1EF0 /* Exceptions for "3d_viewer_custom" folder in "3d_viewer_custom" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"-d-viewer-custom-Info.plist",
+			);
+			target = F48A72202D926A39000E1EF0 /* 3d_viewer_custom */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		F48A72232D926A39000E1EF0 /* 3d_viewer_custom */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				F48A728C2D9CE704000E1EF0 /* Exceptions for "3d_viewer_custom" folder in "3d_viewer_custom" target */,
+			);
+			path = 3d_viewer_custom;
+			sourceTree = "<group>";
+		};
+		F48A72352D926A3A000E1EF0 /* 3d_viewer_customTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = 3d_viewer_customTests;
+			sourceTree = "<group>";
+		};
+		F48A723F2D926A3A000E1EF0 /* 3d_viewer_customUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = 3d_viewer_customUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F48A721E2D926A39000E1EF0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F48A722F2D926A3A000E1EF0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F48A72392D926A3A000E1EF0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F48A72182D926A39000E1EF0 = {
+			isa = PBXGroup;
+			children = (
+				F48A72232D926A39000E1EF0 /* 3d_viewer_custom */,
+				F48A72352D926A3A000E1EF0 /* 3d_viewer_customTests */,
+				F48A723F2D926A3A000E1EF0 /* 3d_viewer_customUITests */,
+				F48A72222D926A39000E1EF0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F48A72222D926A39000E1EF0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F48A72212D926A39000E1EF0 /* 3d_viewer_custom.app */,
+				F48A72322D926A3A000E1EF0 /* 3d_viewer_customTests.xctest */,
+				F48A723C2D926A3A000E1EF0 /* 3d_viewer_customUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F48A72202D926A39000E1EF0 /* 3d_viewer_custom */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F48A72462D926A3A000E1EF0 /* Build configuration list for PBXNativeTarget "3d_viewer_custom" */;
+			buildPhases = (
+				F48A721D2D926A39000E1EF0 /* Sources */,
+				F48A721E2D926A39000E1EF0 /* Frameworks */,
+				F48A721F2D926A39000E1EF0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				F48A72232D926A39000E1EF0 /* 3d_viewer_custom */,
+			);
+			name = 3d_viewer_custom;
+			packageProductDependencies = (
+			);
+			productName = 3d_viewer_custom;
+			productReference = F48A72212D926A39000E1EF0 /* 3d_viewer_custom.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F48A72312D926A3A000E1EF0 /* 3d_viewer_customTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F48A72492D926A3A000E1EF0 /* Build configuration list for PBXNativeTarget "3d_viewer_customTests" */;
+			buildPhases = (
+				F48A722E2D926A3A000E1EF0 /* Sources */,
+				F48A722F2D926A3A000E1EF0 /* Frameworks */,
+				F48A72302D926A3A000E1EF0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F48A72342D926A3A000E1EF0 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				F48A72352D926A3A000E1EF0 /* 3d_viewer_customTests */,
+			);
+			name = 3d_viewer_customTests;
+			packageProductDependencies = (
+			);
+			productName = 3d_viewer_customTests;
+			productReference = F48A72322D926A3A000E1EF0 /* 3d_viewer_customTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		F48A723B2D926A3A000E1EF0 /* 3d_viewer_customUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F48A724C2D926A3A000E1EF0 /* Build configuration list for PBXNativeTarget "3d_viewer_customUITests" */;
+			buildPhases = (
+				F48A72382D926A3A000E1EF0 /* Sources */,
+				F48A72392D926A3A000E1EF0 /* Frameworks */,
+				F48A723A2D926A3A000E1EF0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F48A723E2D926A3A000E1EF0 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				F48A723F2D926A3A000E1EF0 /* 3d_viewer_customUITests */,
+			);
+			name = 3d_viewer_customUITests;
+			packageProductDependencies = (
+			);
+			productName = 3d_viewer_customUITests;
+			productReference = F48A723C2D926A3A000E1EF0 /* 3d_viewer_customUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F48A72192D926A39000E1EF0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1610;
+				LastUpgradeCheck = 1610;
+				TargetAttributes = {
+					F48A72202D926A39000E1EF0 = {
+						CreatedOnToolsVersion = 16.1;
+					};
+					F48A72312D926A3A000E1EF0 = {
+						CreatedOnToolsVersion = 16.1;
+						TestTargetID = F48A72202D926A39000E1EF0;
+					};
+					F48A723B2D926A3A000E1EF0 = {
+						CreatedOnToolsVersion = 16.1;
+						TestTargetID = F48A72202D926A39000E1EF0;
+					};
+				};
+			};
+			buildConfigurationList = F48A721C2D926A39000E1EF0 /* Build configuration list for PBXProject "3d_viewer_custom" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F48A72182D926A39000E1EF0;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = F48A72222D926A39000E1EF0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F48A72202D926A39000E1EF0 /* 3d_viewer_custom */,
+				F48A72312D926A3A000E1EF0 /* 3d_viewer_customTests */,
+				F48A723B2D926A3A000E1EF0 /* 3d_viewer_customUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F48A721F2D926A39000E1EF0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F48A72302D926A3A000E1EF0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F48A723A2D926A3A000E1EF0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F48A721D2D926A39000E1EF0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F48A722E2D926A3A000E1EF0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F48A72382D926A3A000E1EF0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F48A72342D926A3A000E1EF0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F48A72202D926A39000E1EF0 /* 3d_viewer_custom */;
+			targetProxy = F48A72332D926A3A000E1EF0 /* PBXContainerItemProxy */;
+		};
+		F48A723E2D926A3A000E1EF0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F48A72202D926A39000E1EF0 /* 3d_viewer_custom */;
+			targetProxy = F48A723D2D926A3A000E1EF0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		F48A72442D926A3A000E1EF0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F48A72452D926A3A000E1EF0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		F48A72472D926A3A000E1EF0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = 3d_viewer_custom/_d_viewer_custom.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"3d_viewer_custom/Preview Content\"";
+				DEVELOPMENT_TEAM = P6BMHC8R6H;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "-d-viewer-custom-Info.plist";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "harajli.-d-viewer-custom";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		F48A72482D926A3A000E1EF0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = 3d_viewer_custom/_d_viewer_custom.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"3d_viewer_custom/Preview Content\"";
+				DEVELOPMENT_TEAM = P6BMHC8R6H;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "-d-viewer-custom-Info.plist";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "harajli.-d-viewer-custom";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		F48A724A2D926A3A000E1EF0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = P6BMHC8R6H;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "harajli.-d-viewer-customTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/3d_viewer_custom.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/3d_viewer_custom";
+			};
+			name = Debug;
+		};
+		F48A724B2D926A3A000E1EF0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = P6BMHC8R6H;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "harajli.-d-viewer-customTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/3d_viewer_custom.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/3d_viewer_custom";
+			};
+			name = Release;
+		};
+		F48A724D2D926A3A000E1EF0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = P6BMHC8R6H;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "harajli.-d-viewer-customUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = 3d_viewer_custom;
+			};
+			name = Debug;
+		};
+		F48A724E2D926A3A000E1EF0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = P6BMHC8R6H;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "harajli.-d-viewer-customUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = 3d_viewer_custom;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F48A721C2D926A39000E1EF0 /* Build configuration list for PBXProject "3d_viewer_custom" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F48A72442D926A3A000E1EF0 /* Debug */,
+				F48A72452D926A3A000E1EF0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F48A72462D926A3A000E1EF0 /* Build configuration list for PBXNativeTarget "3d_viewer_custom" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F48A72472D926A3A000E1EF0 /* Debug */,
+				F48A72482D926A3A000E1EF0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F48A72492D926A3A000E1EF0 /* Build configuration list for PBXNativeTarget "3d_viewer_customTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F48A724A2D926A3A000E1EF0 /* Debug */,
+				F48A724B2D926A3A000E1EF0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F48A724C2D926A3A000E1EF0 /* Build configuration list for PBXNativeTarget "3d_viewer_customUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F48A724D2D926A3A000E1EF0 /* Debug */,
+				F48A724E2D926A3A000E1EF0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F48A72192D926A39000E1EF0 /* Project object */;
+}
