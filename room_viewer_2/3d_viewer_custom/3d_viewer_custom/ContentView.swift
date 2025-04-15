@@ -22,6 +22,13 @@ struct ContentView: View {
     @State private var isFilePickerPresented = false
     @State private var isRoomPickerPresented = false
     @State private var hasRoomAdded = false
+    @State private var isPlanView: Bool = false // State for view mode
+    
+    // State variables for object manipulation
+    @State private var targetObjectName: String = "id_123" // Default to the hardcoded name
+    @State private var displacementX: String = "0.0"
+    @State private var displacementZ: String = "0.0"
+    @State private var rotationY: String = "0.0" // Degrees
     
     var body: some View {
         HStack(spacing: 0) {
@@ -42,10 +49,21 @@ struct ContentView: View {
                     .help("Load a room layout from a JSON file")
                     .padding(.leading)
                 }
-                .padding()
-                
+                .padding(.horizontal)
+                .padding(.top)
+
+                // Add Toggle for Plan View
+                Toggle("Plan View", isOn: $isPlanView)
+                    .toggleStyle(.switch)
+                    .padding(.horizontal)
+                    .padding(.bottom)
+                    .disabled(!hasRoomAdded)
+                    .onChange(of: isPlanView) { newValue in
+                        roomScene.setPlanView(newValue)
+                    }
+
                 if hasRoomAdded {
-                    SceneView(scene: roomScene.scene)
+                    SceneView(roomScene: roomScene, scene: roomScene.scene)
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                 } else {
                     VStack {
@@ -59,48 +77,89 @@ struct ContentView: View {
             }
             
             if hasRoomAdded {
-                VStack(alignment: .leading, spacing: 12) {
-                    Text("Room Dimensions")
-                        .font(.headline)
-                        .padding(.bottom, 8)
-                    
-                    VStack(alignment: .leading, spacing: 8) {
-                        DimensionRow(label: "Floor Y:", value: roomScene.roomDimensions.floorY)
-                        DimensionRow(label: "Min X:", value: roomScene.roomDimensions.minX)
-                        DimensionRow(label: "Max X:", value: roomScene.roomDimensions.maxX)
-                        DimensionRow(label: "Min Z:", value: roomScene.roomDimensions.minZ)
-                        DimensionRow(label: "Max Z:", value: roomScene.roomDimensions.maxZ)
+                VStack(spacing: 20) { // Added spacing between panels
+                    // --- Room Dimensions Panel ---
+                    VStack(alignment: .leading, spacing: 12) {
+                        Text("Room Dimensions")
+                            .font(.headline)
+                            .padding(.bottom, 8)
                         
-                        Divider()
-                            .padding(.vertical, 4)
-                        
-                        Text("Sofa Position")
-                            .font(.subheadline)
-                            .foregroundColor(.secondary)
-                            .padding(.top, 4)
-                        
-                        DimensionRow(label: "X:", value: roomScene.roomDimensions.sofaX)
-                        DimensionRow(label: "Y:", value: roomScene.roomDimensions.sofaY)
-                        DimensionRow(label: "Z:", value: roomScene.roomDimensions.sofaZ)
-                        
-                        Divider()
-                            .padding(.vertical, 4)
-                        
-                        Text("Sofa Dimensions")
-                            .font(.subheadline)
-                            .foregroundColor(.secondary)
-                            .padding(.top, 4)
-                        
-                        DimensionRow(label: "Width:", value: roomScene.roomDimensions.sofaWidth)
-                        DimensionRow(label: "Height:", value: roomScene.roomDimensions.sofaHeight)
-                        DimensionRow(label: "Length:", value: roomScene.roomDimensions.sofaLength)
+                        VStack(alignment: .leading, spacing: 8) {
+                            DimensionRow(label: "Floor Y:", value: roomScene.roomDimensions.floorY)
+                            DimensionRow(label: "Min X:", value: roomScene.roomDimensions.minX)
+                            DimensionRow(label: "Max X:", value: roomScene.roomDimensions.maxX)
+                            DimensionRow(label: "Min Z:", value: roomScene.roomDimensions.minZ)
+                            DimensionRow(label: "Max Z:", value: roomScene.roomDimensions.maxZ)
+                            
+                            Divider()
+                                .padding(.vertical, 4)
+                            
+                            Text("Sofa Position")
+                                .font(.subheadline)
+                                .foregroundColor(.secondary)
+                                .padding(.top, 4)
+                            
+                            DimensionRow(label: "X:", value: roomScene.roomDimensions.sofaX)
+                            DimensionRow(label: "Y:", value: roomScene.roomDimensions.sofaY)
+                            DimensionRow(label: "Z:", value: roomScene.roomDimensions.sofaZ)
+                            
+                            Divider()
+                                .padding(.vertical, 4)
+                            
+                            Text("Sofa Dimensions")
+                                .font(.subheadline)
+                                .foregroundColor(.secondary)
+                                .padding(.top, 4)
+                            
+                            DimensionRow(label: "Width:", value: roomScene.roomDimensions.sofaWidth)
+                            DimensionRow(label: "Height:", value: roomScene.roomDimensions.sofaHeight)
+                            DimensionRow(label: "Length:", value: roomScene.roomDimensions.sofaLength)
+                        }
                     }
+                    .padding()
+                    .background(Color(.windowBackgroundColor))
+                    .cornerRadius(8)
+                    // Removed bottom padding to move it up
+                    
+                    // --- Object Manipulation Panel ---
+                    VStack(alignment: .leading, spacing: 12) {
+                        Text("Object Manipulation")
+                            .font(.headline)
+                        
+                        TextField("Object Name", text: $targetObjectName)
+                        
+                        HStack {
+                            Text("Disp. X:")
+                            TextField("0.0", text: $displacementX)
+                                .textFieldStyle(RoundedBorderTextFieldStyle())
+                                .multilineTextAlignment(.trailing)
+                        }
+                        HStack {
+                            Text("Disp. Z:")
+                            TextField("0.0", text: $displacementZ)
+                                .textFieldStyle(RoundedBorderTextFieldStyle())
+                                .multilineTextAlignment(.trailing)
+                        }
+                        HStack {
+                            Text("Rot. Y (°):")
+                            TextField("0.0", text: $rotationY)
+                                .textFieldStyle(RoundedBorderTextFieldStyle())
+                                .multilineTextAlignment(.trailing)
+                        }
+                        
+                        Button("Apply Transformation") {
+                            applyTransformation()
+                        }
+                        .frame(maxWidth: .infinity, alignment: .center) // Center button
+                    }
+                    .padding()
+                    .background(Color(.windowBackgroundColor))
+                    .cornerRadius(8)
+                    
+                    Spacer() // Pushes panels towards the top
                 }
-                .padding()
-                .frame(width: 200)
-                .background(Color(.windowBackgroundColor))
-                .cornerRadius(8)
-                .padding()
+                .padding() // Add padding around the VStack containing both panels
+                .frame(width: 250) // Increased width for the side panel
             }
         }
     }
@@ -151,7 +210,10 @@ struct ContentView: View {
                     roomScene.roomDimensions.sofaWidth = Double((boundingBox.max.x - boundingBox.min.x) * scale)
                     roomScene.roomDimensions.sofaHeight = Double((boundingBox.max.y - boundingBox.min.y) * scale)
                     roomScene.roomDimensions.sofaLength = Double((boundingBox.max.z - boundingBox.min.z) * scale)
-                    
+                    // give model a name
+                    modelNode.name = "id_123"
+                    // Set the default target name when a new model is loaded
+                    targetObjectName = modelNode.name ?? "id_123"
                     roomScene.scene.rootNode.addChildNode(modelNode)
                     
                     // Adjust camera to view the model
@@ -188,6 +250,55 @@ struct ContentView: View {
                 print("Room added, hasRoomAdded set to \(hasRoomAdded)")
             }
         }
+    }
+    
+    private func applyTransformation() {
+        guard let node = roomScene.scene.rootNode.childNode(withName: targetObjectName, recursively: true) else {
+            print("Error: Node with name '\(targetObjectName)' not found.")
+            // Optionally show an alert to the user
+            return
+        }
+
+        // Use NumberFormatter for safer string-to-double conversion
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+
+        let dx = formatter.number(from: displacementX)?.doubleValue ?? 0.0
+        let dz = formatter.number(from: displacementZ)?.doubleValue ?? 0.0
+        let rotYDegrees = formatter.number(from: rotationY)?.doubleValue ?? 0.0
+
+        // Convert degrees to radians for SceneKit
+        let rotYRadians = CGFloat(rotYDegrees * .pi / 180.0)
+
+        print("Applying transformation to node '\(targetObjectName)':")
+        print("  Current Position: \(node.position)")
+        print("  Displacement: (X: \(dx), Z: \(dz))")
+        print("  Current Euler Angles: \(node.eulerAngles)")
+        print("  Rotation Y (degrees): \(rotYDegrees)")
+
+        // Apply relative translation
+        let translation = SCNVector3(dx, 0, dz) // Only displace in X and Z
+        node.localTranslate(by: translation)
+
+        // Apply relative rotation around the Y axis
+        // Create a rotation quaternion around the Y axis
+        let rotationQuaternion = SCNQuaternion(x: 0, y: sin(rotYRadians / 2), z: 0, w: cos(rotYRadians / 2))
+        // Combine with existing rotation
+        node.localRotate(by: rotationQuaternion)
+
+        print("  New Position: \(node.position)")
+        print("  New Euler Angles: \(node.eulerAngles)")
+
+        // Update the displayed Sofa Position (if the transformed object IS the sofa)
+        // This assumes the manipulated object's position should update the display.
+        // You might need more robust logic if multiple objects can be manipulated.
+        if targetObjectName == "id_123" { // Or however you identify the "sofa"
+             // Update the RoomDimensions based on the node's *world* position after transformation
+             let worldPosition = node.worldPosition
+             roomScene.roomDimensions.sofaX = Double(worldPosition.x)
+             roomScene.roomDimensions.sofaY = Double(worldPosition.y)
+             roomScene.roomDimensions.sofaZ = Double(worldPosition.z)
+         }
     }
 }
 
